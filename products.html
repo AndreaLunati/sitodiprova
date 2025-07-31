@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Jacksons Dairy - All Products</title>
+  <style>
+    /* CSS completo avanzato per Jacksons Dairy */
+
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background-color: #f8f8f8; /* Un grigio molto chiaro per un tocco di morbidezza */
+      line-height: 1.7; /* Aumenta l'interlinea per una migliore leggibilità */
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 25px; /* Aumenta un po' il padding laterale */
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block; /* Rimuove lo spazio extra sotto le immagini */
+    }
+
+    /* Colori principali */
+    :root {
+      --primary-color: #5cb85c; /* Un verde più vibrante ma naturale */
+      --secondary-color: #ffc107; /* Giallo/Arancio caldo */
+      --dark-color: #2c3e50; /* Blu scuro per testo e elementi principali */
+      --light-gray: #e9ecef;
+      --text-color: #4a4a4a;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      background: var(--dark-color); /* Sfondo scuro per la top bar */
+      color: #fff;
+      padding: 12px 0;
+      font-size: 13px;
+    }
+
+    .top-bar-content {
+      display: flex;
+      justify-content: flex-end; /* Allinea a destra per un look pulito */
+      flex-wrap: wrap;
+      gap: 25px; /* Aumenta lo spazio tra gli elementi */
+    }
+
+    .top-bar-content p {
+      display: flex;
+      align-items: center;
+    }
+
+    .top-bar-content i {
+      margin-right: 8px;
+      color: var(--secondary-color); /* Icone colorate per contrasto */
+    }
+
+    /* Header */
+    .main-header {
+      background: #fff;
+      border-bottom: 1px solid var(--light-gray);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Ombra leggera per profondità */
+      position: sticky; /* Rende la navbar sticky */
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-size: 32px; /* Aumenta la dimensione del logo */
+      font-weight: 800;
+      color: var(--dark-color);
+    }
+
+    .logo-dairy {
+      color: var(--primary-color); /* "Dairy" con il colore primario */
+    }
+
+    .main-nav a {
+      margin-left: 30px; /* Aumenta lo spazio tra i link */
+      font-weight: 600;
+      color: var(--text-color);
+      transition: all 0.3s ease; /* Transizione per gli effetti hover */
+      position: relative; /* Per l'effetto underline */
+    }
+
+    .main-nav a:hover {
+      color: var(--primary-color);
+    }
+
+    .main-nav a::after { /* Sottolineatura animata */
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: var(--primary-color);
+      left: 0;
+      bottom: -5px;
+      transition: 0.3s ease-out;
+    }
+
+    .main-nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Section Title (Generale) */
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px; /* Più spazio sotto il titolo di sezione */
+    }
+
+    .section-title h2 {
+      font-size: 44px;
+      font-weight: 800;
+      color: var(--dark-color);
+      margin-bottom: 15px;
+    }
+
+    .underline {
+      width: 100px; /* Sottolineatura più larga */
+      height: 5px; /* Più spessa */
+      background: var(--primary-color);
+      margin: 10px auto 20px;
+      border-radius: 5px; /* Bordi arrotondati per l'underline */
+    }
+
+    .section-title p {
+      font-size: 17px;
+      color: var(--text-color);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Hero Section - Products Page Specific */
+    .products-hero-section {
+      padding: 80px 0;
+      background: linear-gradient(to right, #eaf6ea, #f8fcf8);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .products-hero-section::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      left: -30px;
+      width: 150px;
+      height: 150px;
+      background: rgba(var(--primary-color), 0.1);
+      border-radius: 50%;
+      filter: blur(40px);
+      z-index: 0;
+    }
+
+    .products-hero-section::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      right: -30px;
+      width: 180px;
+      height: 180px;
+      background: rgba(var(--secondary-color), 0.1);
+      border-radius: 50%;
+      filter: blur(50px);
+      z-index: 0;
+    }
+
+    .products-hero-section h1 {
+      font-size: 52px;
+      font-weight: 800;
+      color: var(--dark-color);
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .products-hero-section p {
+      font-size: 20px;
+      color: var(--text-color);
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Product Categories Section */
+    .categories-section {
+      padding: 80px 20px;
+      background: #f0f4f7;
+      text-align: center;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 25px;
+      margin-top: 50px;
+    }
+
+    .category-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .category-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .category-card i {
+      font-size: 48px;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    .category-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--dark-color);
+    }
+
+    /* Products Section (Main Grid) */
+    .products-section {
+      padding: 100px 20px;
+      background: #fff;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Carte più grandi */
+      gap: 35px; /* Aumenta lo spazio tra le carte */
+      margin-top: 50px;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 15px; /* Bordi più arrotondati */
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* Ombra più pronunciata */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden; /* Assicura che l'immagine arrotondata sia contenuta */
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    .product-card img {
+      border-radius: 10px; /* Bordi arrotondati per le immagini dei prodotti */
+      margin-bottom: 15px;
+      width: 100%;
+      height: 250px; /* Altezza fissa per le immagini dei prodotti */
+      object-fit: cover;
+    }
+
+    .product-card h3 {
+      margin-top: 10px;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--dark-color);
+    }
+
+    .product-card p {
+      font-size: 16px;
+      color: var(--text-color);
+      margin-top: 8px;
+    }
+
+    /* Benefits Section (compact version for products page) */
+    .benefits-section {
+      background: #eaf6ea; /* Light green background */
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .benefit-item {
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .benefit-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .benefit-item i {
+      font-size: 40px;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    .benefit-item h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--dark-color);
+      margin-bottom: 10px;
+    }
+
+    .benefit-item p {
+      font-size: 16px;
+      color: var(--text-color);
+    }
+
+    /* Call to Action Section (specific to products page) */
+    .cta-products-section {
+      background: linear-gradient(to right, var(--dark-color), #34495e); /* Darker gradient */
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .cta-products-section h2 {
+      font-size: 44px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .cta-products-section p {
+      font-size: 20px;
+      margin-bottom: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-products-section .btn {
+      background: #fff;
+      color: var(--dark-color); /* Button text color matches dark background */
+      border: none;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta-products-section .btn:hover {
+      background: var(--light-gray);
+      color: #333;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark-color);
+      color: #e0e0e0; /* Colore più chiaro per il testo del footer */
+      padding: 70px 20px 25px;
+      font-size: 15px;
+    }
+
+    .footer-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px; /* Più spazio tra le colonne */
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+
+    .footer-logo {
+      flex: 2; /* Più spazio per il logo nel footer */
+      min-width: 250px;
+    }
+
+    .footer-logo h2 {
+      color: var(--primary-color);
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .footer-logo p {
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .footer-links,
+    .footer-contact {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .footer-columns h4 {
+      margin-bottom: 18px;
+      font-size: 20px;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links ul li a {
+      transition: color 0.3s ease;
+    }
+
+    .footer-links ul li a:hover {
+      color: var(--primary-color);
+    }
+
+    .footer-contact p {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-contact i {
+      margin-right: 10px;
+      color: var(--secondary-color);
+      font-size: 18px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 50px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 25px;
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .products-hero-section h1 {
+        font-size: 42px;
+      }
+      .products-hero-section p {
+        font-size: 18px;
+      }
+      .category-grid, .benefits-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+      .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+      .cta-products-section h2 {
+        font-size: 38px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .top-bar-content {
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .nav-container {
+        flex-direction: column;
+        padding: 15px 0;
+      }
+
+      .logo {
+        margin-bottom: 15px;
+      }
+
+      .main-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      .main-nav a {
+        margin: 10px 0;
+        font-size: 17px;
+      }
+
+      .section-title h2 {
+        font-size: 38px;
+      }
+
+      .footer-columns {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-logo,
+      .footer-links,
+      .footer-contact {
+        min-width: unset;
+        width: 100%;
+      }
+
+      .footer-contact p {
+        justify-content: center;
+      }
+
+      .products-hero-section h1 {
+        font-size: 36px;
+      }
+      .products-hero-section p {
+        font-size: 16px;
+      }
+      .category-grid, .benefits-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      }
+      .product-grid {
+        grid-template-columns: 1fr; /* Una colonna per i prodotti su schermi molto piccoli */
+      }
+      .cta-products-section h2 {
+        font-size: 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .products-hero-section h1 {
+        font-size: 30px;
+      }
+      .category-grid, .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+      .category-card, .benefit-item {
+        padding: 15px;
+      }
+      .category-card i {
+        font-size: 40px;
+      }
+      .category-card h3 {
+        font-size: 18px;
+      }
+      .benefit-item i {
+        font-size: 32px;
+      }
+      .benefit-item h3 {
+        font-size: 20px;
+      }
+      .cta-products-section h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <p><i class="fas fa-phone"></i> +39 123 456 7890</p>
+      <p><i class="fas fa-envelope"></i> info@jacksonsdairy.com</p>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="main-header">
+    <div class="container nav-container">
+      <h1 class="logo">Jacksons<span class="logo-dairy"> Dairy</span></h1>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="faq.html">FAQ</a>
+        <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Products Hero Section -->
+  <section class="products-hero-section" data-aos="fade-down">
+    <div class="container">
+      <h1>Discover Our Farm-Fresh Delights</h1>
+      <p>Esplora la nostra vasta gamma di prodotti lattiero-caseari, realizzati con passione e ingredienti naturali.</p>
+    </div>
+  </section>
+
+  <!-- Product Categories Section -->
+  <section class="categories-section" data-aos="fade-up">
+    <div class="container">
+      <div class="section-title">
+        <h2>Browse by Category</h2>
+        <div class="underline"></div>
+        <p>Trova facilmente i tuoi prodotti preferiti navigando tra le nostre categorie.</p>
+      </div>
+      <div class="category-grid">
+        <div class="category-card">
+          <a href="#yogurts">
+            <i class="fas fa-cheese"></i> <!-- Using cheese icon for dairy products in general -->
+            <h3>Yogurts</h3>
+          </a>
+        </div>
+        <div class="category-card">
+          <a href="#cheeses">
+            <i class="fas fa-cheese"></i>
+            <h3>Cheeses</h3>
+          </a>
+        </div>
+        <div class="category-card">
+          <a href="#milk">
+            <i class="fas fa-milk"></i>
+            <h3>Milk</h3>
+          </a>
+        </div>
+        <div class="category-card">
+          <a href="#butter">
+            <i class="fas fa-butter"></i>
+            <h3>Butter</h3>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- All Products Section (Main Grid) -->
+  <section class="products-section" id="all-products" data-aos="fade-up">
+    <div class="container">
+      <div class="section-title">
+        <h2>All Products</h2>
+        <div class="underline"></div>
+        <p>La nostra selezione completa di delizie lattiero-casearie, tutte da scoprire.</p>
+      </div>
+      <div class="product-grid">
+        <!-- Yogurts -->
+        <div class="product-card" id="yogurts">
+          <a href="product-detail.html?product=greek-yogurt">
+            <img src="https://images.unsplash.com/photo-1559954005-59b348d67280?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Greek Yogurt">
+            <h3>Greek Yogurt</h3>
+            <p>Creamy, thick and full of protein.</p>
+          </a>
+        </div>
+        <div class="product-card">
+          <a href="product-detail.html?product=strawberry-yogurt">
+            <img src="https://images.unsplash.com/photo-1599370851897-4ac9753c126d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Strawberry Yogurt">
+            <h3>Strawberry Yogurt</h3>
+            <p>Sweet, fresh and fruity indulgence.</p>
+          </a>
+        </div>
+        <div class="product-card">
+          <a href="product-detail.html?product=plain-yogurt">
+            <img src="https://images.unsplash.com/photo-1628169224424-df38d011f67f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Plain Yogurt">
+            <h3>Plain Yogurt</h3>
+            <p>Simple, natural, and versatile.</p>
+          </a>
+        </div>
+
+        <!-- Cheeses -->
+        <div class="product-card" id="cheeses">
+          <a href="product-detail.html?product=aged-cheddar">
+            <img src="https://images.unsplash.com/photo-1563608779777-6f7739951307?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Aged Cheddar">
+            <h3>Aged Cheddar</h3>
+            <p>Rich flavor, matured to perfection.</p>
+          </a>
+        </div>
+        <div class="product-card">
+          <a href="product-detail.html?product=fresh-mozzarella">
+            <img src="https://images.unsplash.com/photo-1628169224424-df38d011f67f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Fresh Mozzarella">
+            <h3>Fresh Mozzarella</h3>
+            <p>Soft, milky and perfect for any dish.</p>
+          </a>
+        </div>
+        <div class="product-card">
+          <a href="product-detail.html?product=ricotta-cheese">
+            <img src="https://images.unsplash.com/photo-1588701987541-11d02e0b1f3c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ricotta Cheese">
+            <h3>Ricotta Cheese</h3>
+            <p>Light and creamy, perfect for desserts or savory dishes.</p>
+          </a>
+        </div>
+
+        <!-- Milk -->
+        <div class="product-card" id="milk">
+          <a href="product-detail.html?product=milk-bottle">
+            <img src="https://images.unsplash.com/photo-1628169224424-df38d011f67f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Fresh Milk Bottle">
+            <h3>Fresh Milk</h3>
+            <p>Pure, wholesome, and straight from our cows.</p>
+          </a>
+        </div>
+
+        <!-- Butter -->
+        <div class="product-card" id="butter">
+          <a href="product-detail.html?product=butter">
+            <img src="https://images.unsplash.com/photo-1628169224424-df38d011f67f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Farm Butter">
+            <h3>Farm Butter</h3>
+            <p>Rich, golden, and churned from fresh cream.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits-section" data-aos="fade-up">
+    <div class="container">
+      <div class="section-title">
+        <h2>Why Choose Jacksons Dairy Products?</h2>
+        <div class="underline"></div>
+        <p>La nostra promessa di qualità e freschezza in ogni singolo prodotto.</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <i class="fas fa-seedling"></i>
+          <h3>Natural Ingredients</h3>
+          <p>Solo i migliori ingredienti naturali, senza additivi o conservanti.</p>
+        </div>
+        <div class="benefit-item">
+          <i class="fas fa-award"></i>
+          <h3>Superior Quality</h3>
+          <p>Standard elevati di produzione per un gusto e una qualità ineguagliabili.</p>
+        </div>
+        <div class="benefit-item">
+          <i class="fas fa-cow"></i>
+          <h3>Happy Cows</h3>
+          <p>Latte proveniente da mucche allevate con cura e rispetto nella nostra fattoria.</p>
+        </div>
+        <div class="benefit-item">
+          <i class="fas fa-truck"></i>
+          <h3>Fresh Delivery</h3>
+          <p>Prodotti consegnati freschi, direttamente dalla fattoria alla tua tavola.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section (Products Page Specific) -->
+  <section class="cta-products-section" data-aos="zoom-in">
+    <div class="container">
+      <h2>Don't Miss Our Special Offers!</h2>
+      <p>Iscriviti alla nostra newsletter per ricevere sconti esclusivi e aggiornamenti sui nuovi prodotti.</p>
+      <a href="contact.html" class="btn btn-primary">Sign Up Now!</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-columns">
+        <div class="footer-logo">
+          <h2>Jacksons<span class="logo-dairy"> Dairy</span></h2>
+          <p>From our farm to your fridge, with love.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p><i class="fas fa-map-marker-alt"></i> Lodi, Italy</p>
+          <p><i class="fas fa-phone"></i> +39 123 456 7890</p>
+          <p><i class="fas fa-envelope"></i> info@jacksonsdairy.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Jacksons Dairy. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS Script -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+
+</body>
+</html>

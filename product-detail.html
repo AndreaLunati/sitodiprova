@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Jacksons Dairy - Product Detail</title>
+  <style>
+    /* CSS completo avanzato per Jacksons Dairy */
+
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background-color: #f8f8f8; /* Un grigio molto chiaro per un tocco di morbidezza */
+      line-height: 1.7; /* Aumenta l'interlinea per una migliore leggibilità */
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 25px; /* Aumenta un po' il padding laterale */
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block; /* Rimuove lo spazio extra sotto le immagini */
+    }
+
+    /* Colori principali */
+    :root {
+      --primary-color: #5cb85c; /* Un verde più vibrante ma naturale */
+      --secondary-color: #ffc107; /* Giallo/Arancio caldo */
+      --dark-color: #2c3e50; /* Blu scuro per testo e elementi principali */
+      --light-gray: #e9ecef;
+      --text-color: #4a4a4a;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      background: var(--dark-color); /* Sfondo scuro per la top bar */
+      color: #fff;
+      padding: 12px 0;
+      font-size: 13px;
+    }
+
+    .top-bar-content {
+      display: flex;
+      justify-content: flex-end; /* Allinea a destra per un look pulito */
+      flex-wrap: wrap;
+      gap: 25px; /* Aumenta lo spazio tra gli elementi */
+    }
+
+    .top-bar-content p {
+      display: flex;
+      align-items: center;
+    }
+
+    .top-bar-content i {
+      margin-right: 8px;
+      color: var(--secondary-color); /* Icone colorate per contrasto */
+    }
+
+    /* Header */
+    .main-header {
+      background: #fff;
+      border-bottom: 1px solid var(--light-gray);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Ombra leggera per profondità */
+      position: sticky; /* Rende la navbar sticky */
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-size: 32px; /* Aumenta la dimensione del logo */
+      font-weight: 800;
+      color: var(--dark-color);
+    }
+
+    .logo-dairy {
+      color: var(--primary-color); /* "Dairy" con il colore primario */
+    }
+
+    .main-nav a {
+      margin-left: 30px; /* Aumenta lo spazio tra i link */
+      font-weight: 600;
+      color: var(--text-color);
+      transition: all 0.3s ease; /* Transizione per gli effetti hover */
+      position: relative; /* Per l'effetto underline */
+    }
+
+    .main-nav a:hover {
+      color: var(--primary-color);
+    }
+
+    .main-nav a::after { /* Sottolineatura animata */
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: var(--primary-color);
+      left: 0;
+      bottom: -5px;
+      transition: 0.3s ease-out;
+    }
+
+    .main-nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Section Title (Generale) */
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px; /* Più spazio sotto il titolo di sezione */
+    }
+
+    .section-title h2 {
+      font-size: 44px;
+      font-weight: 800;
+      color: var(--dark-color);
+      margin-bottom: 15px;
+    }
+
+    .underline {
+      width: 100px; /* Sottolineatura più larga */
+      height: 5px; /* Più spessa */
+      background: var(--primary-color);
+      margin: 10px auto 20px;
+      border-radius: 5px; /* Bordi arrotondati per l'underline */
+    }
+
+    .section-title p {
+      font-size: 17px;
+      color: var(--text-color);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Product Detail Section */
+    .product-detail-section {
+      padding: 100px 20px;
+      background: #fff;
+    }
+
+    .product-detail-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      align-items: flex-start;
+    }
+
+    .product-image-gallery {
+      flex: 1;
+      min-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .main-product-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .thumbnail-gallery {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .thumbnail-gallery img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid transparent;
+      transition: border-color 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .thumbnail-gallery img:hover,
+    .thumbnail-gallery img.active {
+      border-color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+
+    .product-info {
+      flex: 1.5;
+      min-width: 350px;
+    }
+
+    .product-info h1 {
+      font-size: 48px;
+      color: var(--dark-color);
+      margin-bottom: 15px;
+      font-weight: 800;
+    }
+
+    .product-info .price {
+      font-size: 36px;
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+
+    .product-info p {
+      font-size: 18px;
+      color: var(--text-color);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .product-meta {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid var(--light-gray);
+    }
+
+    .product-meta p {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #666;
+    }
+
+    .product-meta span {
+      font-weight: 600;
+      color: var(--dark-color);
+    }
+
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .quantity-selector label {
+      font-size: 18px;
+      font-weight: 600;
+      margin-right: 15px;
+      color: var(--dark-color);
+    }
+
+    .quantity-selector input {
+      width: 80px;
+      padding: 10px;
+      border: 1px solid var(--light-gray);
+      border-radius: 8px;
+      text-align: center;
+      font-size: 18px;
+      color: var(--dark-color);
+    }
+
+    .btn {
+      padding: 14px 35px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary {
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: #4CAF50;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Related Products Section */
+    .related-products-section {
+      padding: 80px 20px;
+      background: #f0f4f7;
+    }
+
+    .related-products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .related-product-card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .related-product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    .related-product-card img {
+      border-radius: 10px;
+      margin-bottom: 15px;
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .related-product-card h3 {
+      font-size: 20px;
+      color: var(--dark-color);
+      margin-bottom: 5px;
+    }
+
+    .related-product-card .price {
+      font-size: 18px;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark-color);
+      color: #e0e0e0;
+      padding: 70px 20px 25px;
+      font-size: 15px;
+    }
+
+    .footer-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+
+    .footer-logo {
+      flex: 2;
+      min-width: 250px;
+    }
+
+    .footer-logo h2 {
+      color: var(--primary-color);
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .footer-logo p {
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .footer-links,
+    .footer-contact {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .footer-columns h4 {
+      margin-bottom: 18px;
+      font-size: 20px;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links ul li a {
+      transition: color 0.3s ease;
+    }
+
+    .footer-links ul li a:hover {
+      color: var(--primary-color);
+    }
+
+    .footer-contact p {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-contact i {
+      margin-right: 10px;
+      color: var(--secondary-color);
+      font-size: 18px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 50px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 25px;
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .product-detail-wrapper {
+        flex-direction: column;
+        align-items: center;
+      }
+      .product-image-gallery, .product-info {
+        min-width: unset;
+        width: 100%;
+      }
+      .product-image-gallery {
+        margin-bottom: 30px;
+      }
+      .product-info h1 {
+        font-size: 38px;
+        text-align: center;
+      }
+      .product-info .price {
+        text-align: center;
+      }
+      .quantity-selector {
+        justify-content: center;
+      }
+      .product-info .btn-primary {
+        width: 100%;
+      }
+      .related-products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .top-bar-content {
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .nav-container {
+        flex-direction: column;
+        padding: 15px 0;
+      }
+
+      .logo {
+        margin-bottom: 15px;
+      }
+
+      .main-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      .main-nav a {
+        margin: 10px 0;
+        font-size: 17px;
+      }
+
+      .section-title h2 {
+        font-size: 38px;
+      }
+
+      .footer-columns {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-logo,
+      .footer-links,
+      .footer-contact {
+        min-width: unset;
+        width: 100%;
+      }
+
+      .footer-contact p {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-image-gallery {
+        min-width: unset;
+      }
+      .product-info h1 {
+        font-size: 32px;
+      }
+      .product-info .price {
+        font-size: 28px;
+      }
+      .thumbnail-gallery img {
+        width: 80px;
+        height: 80px;
+      }
+      .related-products-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <p><i class="fas fa-phone"></i> +39 123 456 7890</p>
+      <p><i class="fas fa-envelope"></i> info@jacksonsdairy.com</p>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="main-header">
+    <div class="container nav-container">
+      <h1 class="logo">Jacksons<span class="logo-dairy"> Dairy</span></h1>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#products">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="faq.html">FAQ</a>
+        <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Product Detail Section -->
+  <section class="product-detail-section" data-aos="fade-up">
+    <div class="container">
+      <div class="product-detail-wrapper">
+        <div class="product-image-gallery">
+          <div class="main-product-image">
+            <img id="mainProductImage" src="https://images.unsplash.com/photo-1559954005-59b348d67280?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Greek Yogurt">
+          </div>
+          <div class="thumbnail-gallery">
+            <img src="https://images.unsplash.com/photo-1559954005-59b348d67280?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Greek Yogurt Thumbnail 1" class="active" onclick="changeMainImage(this)">
+            <img src="https://images.unsplash.com/photo-1583488277255-e51703641b31?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Greek Yogurt Thumbnail 2" onclick="changeMainImage(this)">
+            <img src="https://images.unsplash.com/photo-1571439972828-091a13e5e49f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Greek Yogurt Thumbnail 3" onclick="changeMainImage(this)">
+          </div>
+        </div>
+        <div class="product-info">
+          <h1>Jacksons Greek Yogurt</h1>
+          <p class="price">€4.99</p>
+          <p>Il nostro yogurt greco è denso, cremoso e ricco di proteine, perfetto per una colazione nutriente o uno spuntino sano. Prodotto con latte fresco delle nostre mucche, senza zuccheri aggiunti o conservanti.</p>
+          <p>Ideale da gustare da solo, con frutta fresca, miele o granola. Un vero concentrato di benessere e sapore autentico.</p>
+          <div class="product-meta">
+            <p><strong>Weight:</strong> 500g</p>
+            <p><strong>Ingredients:</strong> Fresh Cow's Milk, Live Cultures</p>
+            <p><strong>Nutritional Info:</strong> High Protein, Low Fat, Rich in Calcium</p>
+          </div>
+          <div class="quantity-selector">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" value="1" min="1" max="10">
+          </div>
+          <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Products Section -->
+  <section class="related-products-section" data-aos="fade-up">
+    <div class="container">
+      <div class="section-title">
+        <h2>Related Products</h2>
+        <div class="underline"></div>
+        <p>Potrebbe interessarti anche:</p>
+      </div>
+      <div class="related-products-grid">
+        <div class="related-product-card">
+          <a href="product-detail.html?product=strawberry-yogurt">
+            <img src="https://images.unsplash.com/photo-1599370851897-4ac9753c126d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Strawberry Yogurt">
+            <h3>Strawberry Yogurt</h3>
+            <p class="price">€3.50</p>
+          </a>
+        </div>
+        <div class="related-product-card">
+          <a href="product-detail.html?product=aged-cheddar">
+            <img src="https://images.unsplash.com/photo-1563608779777-6f7739951307?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Aged Cheddar">
+            <h3>Aged Cheddar</h3>
+            <p class="price">€8.99</p>
+          </a>
+        </div>
+        <div class="related-product-card">
+          <a href="product-detail.html?product=fresh-mozzarella">
+            <img src="https://images.unsplash.com/photo-1628169224424-df38d011f67f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Fresh Mozzarella">
+            <h3>Fresh Mozzarella</h3>
+            <p class="price">€5.20</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-columns">
+        <div class="footer-logo">
+          <h2>Jacksons<span class="logo-dairy"> Dairy</span></h2>
+          <p>From our farm to your fridge, with love.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p><i class="fas fa-map-marker-alt"></i> Lodi, Italy</p>
+          <p><i class="fas fa-phone"></i> +39 123 456 7890</p>
+          <p><i class="fas fa-envelope"></i> info@jacksonsdairy.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Jacksons Dairy. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS Script -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    // JavaScript for changing main product image on thumbnail click
+    function changeMainImage(thumbnail) {
+      const mainImage = document.getElementById('mainProductImage');
+      mainImage.src = thumbnail.src;
+
+      // Remove active class from all thumbnails
+      const thumbnails = document.querySelectorAll('.thumbnail-gallery img');
+      thumbnails.forEach(img => img.classList.remove('active'));
+
+      // Add active class to the clicked thumbnail
+      thumbnail.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
