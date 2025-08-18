@@ -1,0 +1,333 @@
+<!-- genetica.html - Alba Frisona | Selezione genetica e analisi -->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alba Frisona – Selezione genetica & Analisi dati</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    /* Base & palette */
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Poppins',sans-serif;color:#333;background:#f8f8f8;line-height:1.7}
+    img{max-width:100%;height:auto;display:block}
+    a{text-decoration:none;color:inherit}
+    :root{
+      --primary:#5cb85c; --secondary:#ffc107;
+      --dark:#2c3e50; --muted:#6c757d; --light:#ffffff;
+      --panel:#ffffff; --soft:#f0f4f7; --line:#e9ecef;
+    }
+    .container{max-width:1200px;margin:0 auto;padding:0 25px}
+
+    /* Top bar & header (coerente con home) */
+    .top-bar{background:var(--dark);color:#fff;font-size:13px;padding:10px 0}
+    .top-bar .row{display:flex;gap:24px;justify-content:flex-end}
+    .top-bar i{color:var(--secondary);margin-right:8px}
+    header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(0,0,0,.05)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+    .logo{font-size:30px;font-weight:800;color:var(--dark)}
+    .logo span{color:var(--primary)}
+    .nav a{margin-left:26px;font-weight:600;color:#4a4a4a;position:relative}
+    .nav a:hover{color:var(--primary)}
+    .nav a::after{content:'';position:absolute;left:0;bottom:-5px;height:2px;width:0;background:var(--primary);transition:.25s}
+    .nav a:hover::after{width:100%}
+
+    /* Hero */
+    .hero{background:linear-gradient(to right,#eaf6ea,#f8fcf8);padding:70px 0}
+    .hero h1{font-size:42px;font-weight:800;color:var(--dark);text-align:center}
+    .hero p{max-width:920px;margin:12px auto 0;text-align:center;color:#4a4a4a}
+
+    /* Section helpers */
+    section{padding:80px 0}
+    .title{text-align:center;margin-bottom:40px}
+    .title h2{font-size:36px;font-weight:800;color:var(--dark)}
+    .underline{width:100px;height:5px;background:var(--primary);border-radius:6px;margin:12px auto 0}
+    .lead{max-width:980px;margin:14px auto 0;color:#4a4a4a;text-align:center}
+
+    /* Panels & grids */
+    .panel{background:var(--panel);border-radius:14px;box-shadow:0 8px 25px rgba(0,0,0,.06);padding:24px}
+    .two{display:grid;grid-template-columns:1.1fr 1fr;gap:26px}
+    .grid{display:grid;gap:26px}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .chip{display:inline-flex;align-items:center;gap:10px;background:#eef8ef;border:1px solid #d9f0da;color:#245a27;padding:10px 14px;border-radius:999px;font-weight:600}
+    .muted{color:var(--muted)}
+    figure{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+    figure img{width:100%}
+    figcaption{font-size:14px;color:#556; padding:10px 14px;border-top:1px solid var(--line)}
+    .note{background:#fffbe6;border:1px solid #ffe58f;padding:14px;border-radius:10px}
+
+    /* Sticky TOC */
+    .toc{position:sticky;top:86px;align-self:start}
+    .toc .panel{position:sticky;top:86px}
+    .toc h4{margin-bottom:10px}
+    .toc ul{list-style:none}
+    .toc li{margin:6px 0}
+    .toc a{color:#2c3e50}
+    .toc a:hover{color:var(--primary)}
+
+    /* Footer */
+    footer{background:var(--dark);color:#e0e0e0;padding:50px 0;margin-top:40px}
+    footer a:hover{color:var(--primary)}
+
+    /* Responsive */
+    @media (max-width:992px){
+      .two{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:640px){
+      .grid-2,.grid-3{grid-template-columns:1fr}
+      .hero h1{font-size:30px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="row">
+        <span><i class="fa-solid fa-phone"></i> +39 333 000 0000</span>
+        <span><i class="fa-solid fa-envelope"></i> info@albafrisona.it</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="logo">Alba <span>Frisona</span></div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#products">Prodotti</a>
+        <a href="about.html">Chi siamo</a>
+        <a href="#tori">Genetica</a>
+        <a href="#analisi">Grafici</a>
+        <a href="#conclusioni">Conclusioni</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Selezione genetica & Analisi della mandria</h1>
+      <p>
+        Il nostro programma di selezione unisce <strong>tradizione</strong> e <strong>dati</strong>.
+        In questa pagina trovi la scelta dei tori, le strategie per categoria e l’analisi completa
+        dei principali indici genetici e produttivi (gPFT, IES/ICS, morfologia, latte, proteine, grassi,
+        fertilità e salute della mammella).
+      </p>
+    </div>
+  </section>
+
+  <!-- Scelta tori -->
+  <section id="tori">
+    <div class="container two">
+      <div class="panel">
+        <div class="title" style="text-align:left">
+          <h2>La scelta dei nostri tori</h2>
+          <div class="underline" style="margin-left:0"></div>
+        </div>
+        <p>
+          Abbiamo selezionato <strong>16 tori italiani</strong>, sia genomici sia provati, con un’età compresa tra
+          i 2 e i 6 anni. Tutti rispondono ai nostri obiettivi: <strong>latte di alta qualità</strong>, animali
+          <strong>sani e resistenti</strong>, corretta <strong>morfologia</strong> e attenzione alla <strong>sostenibilità</strong>.
+        </p>
+        <p class="muted" style="margin-top:10px">Tra questi, quattro tori sono stati utilizzati in più gruppi di vacche per il loro profilo genetico particolarmente promettente:</p>
+        <ul style="margin:12px 0 0 18px">
+          <li><strong>3STAR OH Marula ET</strong></li>
+          <li><strong>Bertaiola Zobel</strong></li>
+          <li><strong>K&amp;L RM Insieme Barone Rosso R</strong></li>
+          <li><strong>Aquila Holysmokes Asso</strong></li>
+        </ul>
+      </div>
+
+      <!-- Indice rapido (TOC) -->
+      <aside class="toc">
+        <div class="panel">
+          <h4>Indice rapido</h4>
+          <ul>
+            <li><a href="#tori">Scelta dei tori</a></li>
+            <li><a href="#galleria">Galleria & tabelle</a></li>
+            <li><a href="#strategie">Strategie per categoria</a></li>
+            <li><a href="#analisi">Analisi grafici</a></li>
+            <li><a href="#conclusioni">Conclusioni</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Galleria con le pagine immagini (foto tori + tabelle) -->
+  <section id="galleria">
+    <div class="container">
+      <div class="title">
+        <h2>Galleria & Dati di base</h2>
+        <div class="underline"></div>
+        <p class="lead">Foto dei riproduttori e quadri riassuntivi (manze, primipare, secondipare, pluripare).</p>
+      </div>
+
+      <div class="grid grid-2">
+        <figure>
+          <img src="e5899f2a-53be-4fd7-bb77-2a800823d21e.png" alt="Marula ET e madre – pagina 1 del documento"/>
+          <figcaption>3STAR OH Marula ET e madre – introduzione e criteri di selezione.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="353ccad9-44c4-4864-9b29-8c29e3713ccb.png" alt="Zobel e madre; Barone Rosso R e figlia; Aquila Holysmokes Asso – tabelle manze/primipare"/>
+          <figcaption>Bertaiola Zobel, K&amp;L RM Insieme Barone Rosso R, Aquila Holysmokes Asso – dati Manze &amp; Primipare.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="7f696974-e199-40b2-a193-485ec84614e3.png" alt="Tabelle Secondipare e Pluripare; strategie per categoria"/>
+          <figcaption>Secondipare &amp; Pluripare – strategie per categoria e avvio analisi grafici.</figcaption>
+        </figure>
+      </div>
+      <p class="note" style="margin-top:18px">
+        Clic destro → “Apri immagine in nuova scheda” se vuoi vedere ogni pannello a pieno schermo.
+      </p>
+    </div>
+  </section>
+
+  <!-- Strategie per categoria -->
+  <section id="strategie" style="background:#fff">
+    <div class="container">
+      <div class="title">
+        <h2>Strategie per categoria</h2>
+        <div class="underline"></div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="panel">
+          <span class="chip"><i class="fa-solid fa-cow"></i> Manze</span>
+          <p style="margin-top:10px">
+            Utilizziamo tori con indici elevati soprattutto per <strong>morfologia</strong> (TIPO, ICM, IAP),
+            <strong>PFT</strong> e qualità del latte. L’obiettivo è costruire una <strong>base genetica solida</strong>
+            per il futuro della mandria.
+          </p>
+        </div>
+        <div class="panel">
+          <span class="chip"><i class="fa-solid fa-seedling"></i> Primipare, Secondipare, Pluripare</span>
+          <p style="margin-top:10px">
+            Poniamo maggiore attenzione agli <strong>indici funzionali</strong> (longevità, fertilità, facilità di parto,
+            cellule somatiche) per migliorare la gestione quotidiana e ridurre i rischi sanitari.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Analisi grafici -->
+  <section id="analisi">
+    <div class="container">
+      <div class="title">
+        <h2>Analisi dei grafici: cosa ci dicono i dati</h2>
+        <div class="underline"></div>
+        <p class="lead">Andamento di indici genetici, produttivi e funzionali nei 4 gruppi (manze, primipare, secondipare, pluripare).</p>
+      </div>
+
+      <!-- gPFT + IES/ICS -->
+      <div class="grid grid-2">
+        <figure>
+          <img src="e23001ec-f0b9-46b7-97b4-cee57a49d609.png" alt="gPFT e IES/ICS – pagina con 2 grafici (parte alta)"/>
+          <figcaption><strong>gPFT:</strong> crescita costante dal gruppo pluripare fino alle manze. Scelta strategica: le manze sono la base genetica futura della mandria.</figcaption>
+        </figure>
+        <div class="panel">
+          <h3 style="font-size:22px;margin-bottom:8px">Indici economici (IES-PR€ / ICS-PR€)</h3>
+          <p>Si registra una crescita significativa tra le pluripare e le secondipare; successivamente le curve si discostano leggermente.</p>
+          <ul style="margin:10px 0 0 18px">
+            <li><strong>IES</strong> migliora nel tempo → selezione efficace anche sul piano economico/sostenibilità.</li>
+            <li><strong>ICS</strong> mostra una lieve flessione dopo le secondipare ma rimane su buoni livelli.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Morfologia + Latte -->
+      <div class="grid grid-2" style="margin-top:26px">
+        <figure>
+          <img src="e60d9d83-4808-45c9-87e3-6e52e2bcc965.png" alt="Tipo / ICM / Arti & Piedi + Latte kg (pagina successiva)"/>
+          <figcaption>
+            <strong>Tipo, ICM, Arti &amp; Piedi:</strong> crescita evidente tra primipare e manze → miglioramento morfologico nella nuova generazione. <br/>
+            <strong>Latte (kg):</strong> produzione in crescita fino alle primipare, poi lieve calo e stabilizzazione nelle manze (intorno a ~1000 kg).
+          </figcaption>
+        </figure>
+
+        <!-- Proteine/Grassi -->
+        <figure>
+          <img src="fefb0f4e-6872-42e3-8abe-db7b79a6cc2f.png" alt="PROT % / GRASSO % e PROT Kg / GRASSO Kg"/>
+          <figcaption>
+            <strong>% Proteine &amp; Grassi:</strong> valori abbastanza costanti con lieve tendenza alla crescita nelle manze. <br/>
+            <strong>Kg Proteine &amp; Grassi:</strong> aumento costante fino alle manze → produzione sempre più efficace sia in quantità che in qualità.
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- Parto + Funzionali -->
+      <div class="grid grid-2" style="margin-top:26px">
+        <figure>
+          <img src="15044250-dc47-4200-9367-830d46422d72.png" alt="Facilità di parto; Indici funzionali; Conclusioni"/>
+          <figcaption>
+            <strong>Facilità di parto:</strong> valori bilanciati tra tori e figlie → buon equilibrio, soprattutto nelle manze. <br/>
+            <strong>Indici funzionali:</strong> longevità alta (in crescita fino alle secondipare, poi lieve calo), cellule somatiche buone e stabili, fertilità costante.
+          </figcaption>
+        </figure>
+
+        <div class="panel">
+          <h3 style="font-size:22px;margin-bottom:8px">Lettura operativa</h3>
+          <p>Le evidenze dei grafici guidano scelte pratiche su accoppiamenti, rimonta e gestione sanitaria:</p>
+          <ul style="margin:10px 0 0 18px">
+            <li>Spinta genetica su manze per consolidare <strong>gPFT</strong> e morfologia.</li>
+            <li>Nei gruppi in lattazione, focus su <strong>funzionali</strong> (fertilità, cellule, longevità) e mantenimento qualità latte.</li>
+            <li>Monitoraggio economico tramite <strong>IES/ICS</strong> per un bilanciamento tra redditività e sostenibilità.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Conclusioni -->
+  <section id="conclusioni" style="background:#fff">
+    <div class="container">
+      <div class="title">
+        <h2>Conclusioni</h2>
+        <div class="underline"></div>
+      </div>
+      <div class="panel">
+        <p>
+          I dati confermano che il nostro lavoro di selezione genetica sta producendo risultati concreti:
+          le <strong>manze</strong>, cioè le vacche più giovani, mostrano i valori più promettenti in quasi tutti
+          gli indici. Stiamo costruendo una <strong>base genetica solida</strong>, con animali sani, produttivi e adatti
+          a un’agricoltura moderna, responsabile e sostenibile.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="grid grid-3">
+        <div>
+          <h3 style="color:var(--primary);font-weight:800">Alba Frisona</h3>
+          <p>Dal nostro allevamento alla tua tavola, con cura.</p>
+        </div>
+        <div>
+          <h4>Link</h4>
+          <p><a href="index.html">Home</a> · <a href="about.html">Chi siamo</a> · <a href="index.html#products">Prodotti</a></p>
+        </div>
+        <div>
+          <h4>Contatti</h4>
+          <p>Casalpusterlengo (LO) · +39 333 000 0000 · <a href="mailto:info@albafrisona.it">info@albafrisona.it</a></p>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:14px;font-size:14px">&copy; 2025 Alba Frisona. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
