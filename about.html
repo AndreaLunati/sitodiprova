@@ -1,231 +1,240 @@
-<!-- about.html - Alba Frisona -->
+<!-- about.html - Alba Frisona (completo) -->
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <title>Alba Frisona - Chi siamo</title>
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Poppins',sans-serif; color:#333; background:#f8f8f8; line-height:1.7; }
-    .container { max-width:1200px; margin:0 auto; padding:0 25px; }
-    a { color:inherit; text-decoration:none; }
-    img { max-width:100%; display:block; height:auto; }
-    :root { --primary-color:#5cb85c; --secondary-color:#ffc107; --dark-color:#2c3e50; --light-gray:#e9ecef; --text-color:#4a4a4a; }
-
-    .top-bar { background:var(--dark-color); color:#fff; padding:12px 0; font-size:13px; }
-    .top-bar-content { display:flex; justify-content:flex-end; gap:25px; flex-wrap:wrap; }
-    .top-bar-content i { margin-right:8px; color:var(--secondary-color); }
-
-    .main-header { background:#fff; border-bottom:1px solid var(--light-gray); box-shadow:0 2px 10px rgba(0,0,0,.05); position:sticky; top:0; z-index:1000; }
-    .nav-container { display:flex; justify-content:space-between; align-items:center; padding:18px 0; }
-    .logo { font-size:32px; font-weight:800; color:var(--dark-color); }
-    .logo-dairy { color:var(--primary-color); }
-    .main-nav a { margin-left:30px; font-weight:600; color:var(--text-color); position:relative; transition:.3s; }
-    .main-nav a:hover { color:var(--primary-color); }
-    .main-nav a::after { content:''; position:absolute; width:0%; height:2px; background:var(--primary-color); left:0; bottom:-5px; transition:.3s; }
-    .main-nav a:hover::after { width:100%; }
-
-    .section-title { text-align:center; margin-bottom: 50px; }
-    .section-title h2 { font-size:42px; font-weight:800; color:var(--dark-color); margin-bottom:15px; }
-    .underline { width:100px; height:5px; background:var(--primary-color); margin:10px auto 20px; border-radius:5px; }
-    .section-title p { font-size:17px; color:var(--text-color); max-width:900px; margin:0 auto; }
-
-    .about-section { background:#fff; padding: 90px 20px; }
-    .about-content { display:flex; flex-wrap:wrap; gap:50px; align-items:center; margin-top:30px; }
-    .about-text { flex:1.5; min-width:350px; }
-    .about-image { flex:1; min-width:300px; }
-    .about-text h3 { font-size:30px; color:var(--primary-color); margin-bottom:14px; font-weight:700; }
-    .about-text p { font-size:17px; color:var(--text-color); margin-bottom:10px; }
-    .about-image img { border-radius:15px; box-shadow:0 10px 30px rgba(0,0,0,.08); width:100%; height:380px; object-fit:cover; }
-
-    .mission-section { background:#f0f4f7; padding: 90px 20px; }
-    .mission-content { max-width:1000px; margin:0 auto; text-align:center; }
-    .mission-content h3 { font-size:36px; font-weight:800; color:var(--dark-color); margin-bottom:18px; }
-    .mission-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:20px; margin-top: 24px; }
-    .value-card { background:#fff; padding:22px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,.06); text-align:left; }
-    .value-card h4 { font-size:18px; margin-bottom:8px; color:var(--dark-color); }
-    .value-card p { font-size:16px; color:var(--text-color); }
-
-    .team-section { background:#fff; padding: 90px 20px; }
-    .team-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:28px; margin-top: 30px; }
-    .team-member-card { background:#f8f9fb; padding:22px; border-radius:12px; text-align:center; box-shadow:0 6px 18px rgba(0,0,0,.06); }
-    .team-member-card img { width:140px; height:140px; border-radius:50%; object-fit:cover; margin:0 auto 12px; border:4px solid var(--secondary-color); }
-    .team-member-card h3 { font-size:20px; color:var(--dark-color); margin-bottom:4px; }
-    .team-member-card p { font-size:15px; color:var(--text-color); }
-
-    .footer { background:var(--dark-color); color:#e0e0e0; padding: 60px 20px 24px; font-size:15px; }
-    .footer-columns { display:flex; flex-wrap:wrap; gap:40px; justify-content:space-between; margin-bottom:34px; }
-    .footer-logo { flex:2; min-width:250px; }
-    .footer-logo h2 { color:var(--primary-color); font-size:28px; margin-bottom:8px; }
-    .footer-links, .footer-contact { flex:1; min-width:180px; }
-    .footer-columns h4 { margin-bottom:14px; font-size:20px; color:#fff; font-weight:700; }
-    .footer-links ul { list-style:none; }
-    .footer-links li { margin-bottom:8px; }
-    .footer-links a { transition: color .3s ease; }
-    .footer-links a:hover { color:var(--primary-color); }
-    .footer-contact p { margin-bottom:8px; display:flex; align-items:center; }
-    .footer-contact i { margin-right:10px; color:var(--secondary-color); font-size:18px; }
-    .footer-bottom { text-align:center; margin-top:36px; border-top:1px solid rgba(255,255,255,.1); padding-top:18px; font-size:14px; }
-
-    @media (max-width: 992px) {
-      .about-content { flex-direction:column; text-align:center; }
-      .about-image { order:-1; }
-      .about-image img { height:300px; }
-      .team-grid { grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); }
-    }
-    @media (max-width: 768px) {
-      .top-bar-content { justify-content:center; gap:15px; }
-      .nav-container { flex-direction:column; padding:15px 0; }
-      .logo { margin-bottom:10px; }
-      .main-nav { display:flex; flex-direction:column; align-items:center; width:100%; }
-      .main-nav a { margin:8px 0; font-size:17px; }
-    }
-    @media (max-width: 480px) {
-      .section-title h2 { font-size:30px; }
-      .mission-content h3 { font-size:28px; }
-    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Poppins',sans-serif;color:#333;background:#f8f8f8;line-height:1.7}
+    .container{max-width:1200px;margin:0 auto;padding:0 25px}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block;height:auto}
+    :root{--primary:#5cb85c;--secondary:#ffc107;--dark:#2c3e50;--light:#e9ecef;--text:#4a4a4a}
+    .top-bar{background:var(--dark);color:#fff;padding:10px 0;font-size:13px}
+    .top-bar .row{display:flex;gap:24px;justify-content:flex-end}
+    .main-header{background:#fff;border-bottom:1px solid var(--light);box-shadow:0 2px 10px rgba(0,0,0,.05);position:sticky;top:0;z-index:1000}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .logo{font-weight:800;font-size:30px;color:var(--dark)}
+    .logo span{color:var(--primary)}
+    .nav a{margin-left:28px;font-weight:600;color:var(--text);position:relative}
+    .nav a:hover{color:var(--primary)}
+    .nav a:after{content:'';position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--primary);transition:.3s}
+    .nav a:hover:after{width:100%}
+    .section{padding:90px 0;background:#fff}
+    .section.gray{background:#f0f4f7}
+    .title{text-align:center;margin-bottom:40px}
+    .title h2{font-size:42px;font-weight:800;color:var(--dark)}
+    .title .u{width:100px;height:5px;background:var(--primary);margin:12px auto 18px;border-radius:5px}
+    .cols{display:flex;flex-wrap:wrap;gap:40px;align-items:center}
+    .col{flex:1;min-width:320px}
+    .lead{font-size:18px;color:var(--text)}
+    .card{background:#fff;border-radius:14px;box-shadow:0 8px 25px rgba(0,0,0,.06);padding:24px}
+    .bullets li{margin:6px 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+    .pill{padding:14px 16px;border-radius:12px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+    .foot{background:var(--dark);color:#e0e0e0;padding:60px 0 24px}
+    .foot .cols{align-items:flex-start}
+    .foot h4{color:#fff;margin-bottom:10px}
+    @media(max-width:768px){.title h2{font-size:30px}.nav{flex-direction:column;gap:10px}}
   </style>
 </head>
 <body>
-  <!-- Top Bar -->
-  <div class="top-bar">
-    <div class="container top-bar-content">
-      <p><i class="fas fa-phone"></i> +39 333 000 0000</p>
-      <p><i class="fas fa-envelope"></i> info@albafrisona.it</p>
-    </div>
-  </div>
+  <div class="top-bar"><div class="container"><div class="row">
+    <span><i class="fas fa-phone" style="color:#ffc107"></i> +39 333 000 0000</span>
+    <span><i class="fas fa-envelope" style="color:#ffc107"></i> info@albafrisona.it</span>
+  </div></div></div>
 
-  <!-- Header -->
   <header class="main-header">
-    <div class="container nav-container">
-      <h1 class="logo">Alba<span class="logo-dairy"> Frisona</span></h1>
-      <nav class="main-nav">
+    <div class="container nav">
+      <div class="logo">Alba <span>Frisona</span></div>
+      <nav>
         <a href="index.html">Home</a>
-        <a href="index.html#products">Prodotti</a>
+        <a href="products.html">Prodotti</a>
         <a href="about.html">Chi siamo</a>
-        <a href="index.html#contact">Contatti</a>
-        <a href="index.html#faq">FAQ</a>
+        <a href="attivita.html">Attività</a>
+        <a href="contact.html">Contatti</a>
       </nav>
     </div>
   </header>
 
-  <!-- About Section -->
-  <section class="about-section" id="about" data-aos="fade-up">
+  <!-- CHI SIAMO -->
+  <section class="section" id="chi-siamo" data-aos="fade-up">
     <div class="container">
-      <div class="section-title">
-        <h2>Chi siamo</h2>
-        <div class="underline"></div>
-        <p>Alba Frisona nasce nel 1992 a Casalpusterlengo (LO), nel cuore fertile della Pianura Padana. Dal sogno di nonno Ernesto, allevatore da generazioni, abbiamo ridato vita alla stalla di famiglia puntando su qualità e benessere animale.</p>
+      <div class="title">
+        <h2>Chi siamo</h2><div class="u"></div>
+        <p class="lead">Nati dal sogno di nonno Ernesto, dal 1992 alleviamo 150 Frisone a Casalpusterlengo (LO), trasformando ogni giorno il nostro latte in yogurt e formaggio artigianale.</p>
       </div>
-      <div class="about-content">
-        <div class="about-text">
-          <h3>La nostra storia</h3>
-          <p>Agli inizi: mungitura manuale, stalle essenziali e alimentazione preparata a mano. Dai primi anni 2000 la seconda generazione ha avviato una crescita importante: nuove stalle, ventilazione e abbeveraggio automatici, lettiere più confortevoli, protocolli veterinari e nutrizionali evoluti.</p>
-          <p>Negli ultimi anni abbiamo introdotto robot di mungitura che permettono alle vacche di scegliere quando essere munte, riducendo lo stress. I sistemi raccolgono dati preziosi su salute e produzione, fondamentali per la gestione della mandria.</p>
-          <p>Oggi, con 150 vacche di razza Frisona allevate con attenzione e rispetto, trasformiamo il nostro latte in yogurt e formaggi artigianali, valorizzando la filiera corta e il legame con la comunità.</p>
+      <div class="cols">
+        <div class="col">
+          <p>Alba Frisona nasce nel 1992 nel cuore fertile della Pianura Padana. Oggi la seconda generazione porta avanti un modello di allevamento che unisce tradizione e innovazione, con attenzione al benessere animale e alla qualità del latte.</p>
+          <p>Distribuiamo localmente tramite mercati, negozi di zona e GAS, privilegiando la filiera corta e il rapporto diretto con i consumatori.</p>
         </div>
-        <div class="about-image">
-          <!-- STALLA (primo piano in stabulazione) -->
-          <img src="images/cows-4018007_1280.jpg" alt="Allevamento e stalle moderne">
+        <div class="col"><img src="pasture-2837650_1280.jpg" alt="I nostri prati e le nostre Frisone"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IL NOSTRO ALLEVAMENTO -->
+  <section class="section gray" id="allevamento" data-aos="fade-up">
+    <div class="container">
+      <div class="title"><h2>Il nostro allevamento</h2><div class="u"></div></div>
+      <div class="cols">
+        <div class="col"><img src="milking-2553519_1280.jpg" alt="Mungitura in ambiente controllato"></div>
+        <div class="col">
+          <div class="card">
+            <p>Stalle moderne con spazi ampi, lettiere confortevoli e ventilazione. Alimentazione bilanciata con foraggi prodotti nei nostri campi (mais, erba medica e altre essenze). La mungitura avviene in ambienti puliti e controllati per ottenere latte sano e costante.</p>
+            <p>Una parte del latte viene trasformata nel nostro laboratorio in yogurt e formaggi artigianali.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Mission & Values -->
-  <section class="mission-section" data-aos="fade-up">
+  <!-- SOSTENIBILITÀ & TERRITORIO -->
+  <section class="section" id="sostenibilita" data-aos="fade-up">
     <div class="container">
-      <div class="section-title">
-        <h2>Missione e Valori</h2>
-        <div class="underline"></div>
-        <p>L’obiettivo: latte, yogurt e formaggi freschi, genuini e di qualità, nel rispetto del benessere animale e dell’ambiente. Tradizione agricola e innovazione si intrecciano ogni giorno.</p>
-      </div>
-      <div class="mission-content">
-        <h3>I nostri valori</h3>
-        <div class="mission-grid">
-          <div class="value-card"><h4>Qualità e cura</h4><p>Dal foraggio alla trasformazione del latte, ogni dettaglio conta.</p></div>
-          <div class="value-card"><h4>Sostenibilità</h4><p>Fotovoltaico, rotazioni colturali e gestione responsabile dei reflui.</p></div>
-          <div class="value-card"><h4>Benessere animale</h4><p>Spazi adeguati, alimentazione equilibrata e attenzione quotidiana.</p></div>
-          <div class="value-card"><h4>Famiglia e territorio</h4><p>Radici solide e rapporto diretto con la comunità locale.</p></div>
-          <div class="value-card"><h4>Innovazione e tradizione</h4><p>Tecnologie moderne unite alla sapienza agricola di sempre.</p></div>
-        </div>
+      <div class="title"><h2>Sostenibilità e Territorio</h2><div class="u"></div></div>
+      <div class="grid">
+        <div class="pill"><h3>Energia & suolo</h3><p>Pannelli fotovoltaici, rotazioni colturali e uso dei reflui come fertilizzante naturale.</p></div>
+        <div class="pill"><h3>Territorio</h3><p>Le pianure lodigiane, irrigate da canali e rogge, garantiscono foraggi di qualità. Vicinanza a Lodi e Milano per la filiera corta.</p></div>
+        <div class="pill"><h3>Missione</h3><p>Produrre latte, yogurt e formaggi freschi e genuini, nel rispetto del benessere animale e dell’ambiente.</p></div>
+        <div class="pill"><h3>Valori</h3><p>Qualità e cura, sostenibilità, benessere animale, famiglia e territorio, innovazione e tradizione.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- Team / La squadra -->
-  <section class="team-section" data-aos="fade-up">
+  <!-- STORIA -->
+  <section class="section gray" id="storia" data-aos="fade-up">
     <div class="container">
-      <div class="section-title">
-        <h2>La squadra</h2>
-        <div class="underline"></div>
-        <p>Allevatori e veterinari condividono i valori dell’azienda. Monitoriamo costantemente salute e benessere della mandria, intervenendo con tempestività.</p>
-      </div>
-      <div class="team-grid">
-        <div class="team-member-card">
-          <!-- Allevatori -->
-          <img src="images/cows-4017977_1280.jpg" alt="Allevatori in stalla">
-          <h3>Allevatori</h3>
-          <p>Gestione quotidiana della stalla, alimentazione e benessere degli animali.</p>
+      <div class="title"><h2>La nostra storia</h2><div class="u"></div></div>
+      <div class="cols">
+        <div class="col">
+          <p>Dagl’inizi con mungitura manuale alla crescita dei primi anni 2000: nuove stalle, ventilazione e protocolli avanzati. Negli ultimi anni l’introduzione dei <strong>robot di mungitura</strong> ha ridotto lo stress, aumentato i dati utili sulla salute e migliorato la qualità complessiva del latte.</p>
         </div>
-        <div class="team-member-card">
-          <!-- Veterinari -->
-          <img src="images/heifer-calf-7029463_1280.jpg" alt="Cura veterinaria del vitello">
-          <h3>Veterinari</h3>
-          <p>Controlli sanitari, protocolli e prevenzione per una mandria sana.</p>
-        </div>
-        <div class="team-member-card">
-          <!-- Laboratorio / Caseificio -->
-          <img src="images/cheese-3569959_1280-1.jpg" alt="Trasformazione latte in formaggio">
-          <h3>Laboratorio</h3>
-          <p>Trasformazione del latte in yogurt e formaggi genuini di alta qualità.</p>
-        </div>
-        <div class="team-member-card">
-          <!-- Accoglienza / tour -->
-          <img src="images/yZTcYgGUEmxp.jpg.webp" alt="Tour e accoglienza in azienda">
-          <h3>Accoglienza</h3>
-          <p>Fattoria didattica, tour ed eventi per conoscere da vicino il mondo agricolo.</p>
-        </div>
+        <div class="col"><img src="milk-1809238_1280.jpg" alt="Evoluzione dell’azienda"></div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
+  <!-- RAZZA FRISONA -->
+  <section class="section" id="razza" data-aos="fade-up">
     <div class="container">
-      <div class="footer-columns">
-        <div class="footer-logo">
-          <h2>Alba<span class="logo-dairy"> Frisona</span></h2>
-          <p>Dal nostro allevamento alla tua tavola, con cura.</p>
+      <div class="title"><h2>La nostra razza: la Frisona</h2><div class="u"></div></div>
+      <div class="cols">
+        <div class="col">
+          <p>La Frisona, originaria della Frisia, è la razza da latte più diffusa e si è adattata perfettamente alla Pianura Padana. Mantello pezzato nero, femmine 600–800 kg, docile ed energica.</p>
+          <p>In Italia il riferimento è <strong>ANAFIBJ</strong>, l’ente per selezione genetica e miglioramento della razza.</p>
         </div>
-        <div class="footer-links">
-          <h4>Link rapidi</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#products">Prodotti</a></li>
-            <li><a href="about.html">Chi siamo</a></li>
-            <li><a href="index.html#contact">Contatti</a></li>
-            <li><a href="index.html#faq">FAQ</a></li>
+        <div class="col"><img src="cow-4270355_1280.jpg" alt="Frisona"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENESSERE ANIMALE & STALLE -->
+  <section class="section gray" id="benessere" data-aos="fade-up">
+    <div class="container">
+      <div class="title"><h2>Allevamento e benessere</h2><div class="u"></div></div>
+      <div class="cols">
+        <div class="col card">
+          <h3 style="color:#5cb85c">Le nostre stalle</h3>
+          <ul class="bullets">
+            <li>Cuccette ampie, antiscivolo e sempre disponibili.</li>
+            <li>Corsie spaziose per movimento agevole.</li>
+            <li>Ventilazione naturale e forzata per aria fresca.</li>
+            <li>Abbeveratoi collettivi a livello costante.</li>
+            <li>Mangiatoie autocatturanti antisoffoco.</li>
+            <li>Robot esterno per pulizia e distribuzione del cibo.</li>
           </ul>
         </div>
-        <div class="footer-contact">
+        <div class="col"><img src="heifer-calf-7029463_1280.jpg" alt="Benessere animale"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALIMENTAZIONE & MUNGITURA -->
+  <section class="section" id="alimentazione" data-aos="fade-up">
+    <div class="container">
+      <div class="title"><h2>Alimentazione e mungitura</h2><div class="u"></div></div>
+      <div class="cols">
+        <div class="col"><img src="pasture-2837650_1280.jpg" alt="Alimentazione al pascolo"></div>
+        <div class="col">
+          <p><strong>Alimentazione a filiera chiusa</strong>: produciamo nei nostri campi mais, erba medica e altri foraggi. Integriamo vitamine e minerali per bilanciare la dieta.</p>
+          <p><strong>Mungitura con 2 robot</strong>: le vacche scelgono quando farsi mungere; il sistema pulisce, attacca delicatamente e disinfetta, raccogliendo dati preziosi su quantità e qualità del latte.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LA SQUADRA -->
+  <section class="section gray" id="squadra" data-aos="fade-up">
+    <div class="container">
+      <div class="title"><h2>La squadra</h2><div class="u"></div></div>
+      <div class="grid">
+        <div class="pill"><h3>Allevatori</h3><p>Gestione quotidiana della stalla, alimentazione e benessere degli animali.</p></div>
+        <div class="pill"><h3>Veterinari</h3><p>Controlli sanitari, protocolli e prevenzione costante.</p></div>
+        <div class="pill"><h3>Laboratorio</h3><p>Trasformazione del latte in yogurt e formaggi genuini.</p></div>
+        <div class="pill"><h3>Accoglienza</h3><p>Fattoria didattica, tour ed eventi.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELEZIONE GENETICA -->
+  <section class="section" id="genetica" data-aos="fade-up">
+    <div class="container">
+      <div class="title"><h2>Selezione genetica della mandria</h2><div class="u"></div></div>
+      <div class="cols">
+        <div class="col">
+          <p>Puntiamo su riproduttori valutati da <strong>ANAFIBJ</strong> per una mandria più sana, longeva, produttiva e con latte ideale per yogurt e formaggi.</p>
+          <h3 style="color:#5cb85c;margin:10px 0">Obiettivi</h3>
+          <ul class="bullets">
+            <li>Benessere animale e resistenza alle malattie</li>
+            <li>Produzione adeguata e qualità del latte (grasso, proteine, resa alla caseificazione)</li>
+            <li><strong>κ-caseina BB</strong>, <strong>ICS-PR</strong> e <strong>IES</strong> come indici chiave</li>
+          </ul>
+          <h3 style="color:#5cb85c;margin:10px 0">Indici che usiamo</h3>
+          <p><strong>PFT</strong> (Produzione, Funzionalità, Tipo) + indici morfologici (TIPO, ICM, IAP), funzionali (Longevità, Cellule Somatiche, Fertilità, Facilità di parto), produttivi (Kg latte, grasso, proteine) e caseari (<strong>κ-caseina BB</strong>, <strong>ICS-PR</strong>), oltre all’indice <strong>IES</strong> di efficienza e sostenibilità.</p>
+        </div>
+        <div class="col">
+          <div class="card">
+            <h3 style="color:#5cb85c">Scelte operative</h3>
+            <p>Abbiamo selezionato 16 tori (genomici e provati). Tra i più usati: <em>3STAR OH Marula ET</em>, <em>Aquila Holysmokes Asso</em>, <em>Bertaiola Zobel</em>, <em>K&L RM Inseme Barone Rosso R</em>.</p>
+            <p><strong>Strategie:</strong> sulle manze massima enfasi a PFT, TIPO/ICM/IAP e qualità del latte; sulle vacche in lattazione focus su longevità, fertilità, facilità di parto e cellule somatiche.</p>
+            <p><strong>Conclusioni:</strong> i dati confermano progressi concreti: le manze mostrano i valori più promettenti in quasi tutti gli indici, costruendo una base genetica solida per il futuro.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <div class="container">
+      <div class="cols">
+        <div class="col">
+          <h3 class="logo">Alba <span>Frisona</span></h3>
+          <p>Dal nostro allevamento alla tua tavola, con cura.</p>
+        </div>
+        <div class="col">
+          <h4>Link</h4>
+          <p><a href="index.html">Home</a> · <a href="products.html">Prodotti</a> · <a href="about.html">Chi siamo</a> · <a href="attivita.html">Attività</a> · <a href="contact.html">Contatti</a></p>
+        </div>
+        <div class="col">
           <h4>Contatti</h4>
-          <p><i class="fas fa-map-marker-alt"></i> Casalpusterlengo (LO), Italia</p>
+          <p><i class="fas fa-map-marker-alt"></i> Casalpusterlengo (LO)</p>
           <p><i class="fas fa-phone"></i> +39 333 000 0000</p>
           <p><i class="fas fa-envelope"></i> info@albafrisona.it</p>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Alba Frisona. Tutti i diritti riservati.</p>
-      </div>
+      <p style="text-align:center;margin-top:18px;font-size:14px;">&copy; 2025 Alba Frisona. Tutti i diritti riservati.</p>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>AOS.init({ duration: 1000, once: true });</script>
+  <script>AOS.init({duration:1000,once:true});</script>
 </body>
 </html>
