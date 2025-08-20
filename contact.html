@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Alba Frisona - Contatti</title>
+  <style>
+    /* (stili coerenti con le altre pagine, ridotti per brevità) */
+    *{margin:0;padding:0;box-sizing:border-box} body{font-family:'Poppins',sans-serif;background:#f8f8f8;color:#333;line-height:1.7}
+    .container{max-width:1200px;margin:0 auto;padding:0 25px} a{text-decoration:none;color:inherit} img{max-width:100%;display:block}
+    :root{--primary-color:#5cb85c;--secondary-color:#ffc107;--dark-color:#2c3e50;--light-gray:#e9ecef;--text-color:#4a4a4a}
+    .top-bar{background:var(--dark-color);color:#fff;padding:12px 0}.top-bar-content{display:flex;justify-content:flex-end;gap:25px;flex-wrap:wrap}
+    .main-header{background:#fff;border-bottom:1px solid var(--light-gray);box-shadow:0 2px 10px rgba(0,0,0,.05);position:sticky;top:0;z-index:1000}
+    .nav-container{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+    .logo{display:flex;align-items:center;gap:10px;font-size:28px;font-weight:800;color:var(--dark-color)} .logo img{width:34px;height:34px}
+    .main-nav a{margin-left:30px;font-weight:600;color:var(--text-color);position:relative;transition:.3s}.main-nav a:hover{color:var(--primary-color)}
+    .section-title{text-align:center;margin:60px 0 30px}.section-title h2{font-size:44px;font-weight:800;color:#2c3e50}
+    .underline{width:100px;height:5px;background:var(--primary-color);margin:10px auto 20px;border-radius:5px}
+    .contact-section{padding:40px 0;background:#f4f4f4}.contact-content{display:flex;flex-wrap:wrap;gap:50px;margin-top:10px}
+    .contact-info,.contact-form-wrapper{background:#fff;padding:30px;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+    .contact-info{flex:1;min-width:300px}.contact-info h3,.contact-form-wrapper h3{font-size:26px;color:var(--primary-color);font-weight:700;margin-bottom:15px}
+    .contact-info p{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+    .contact-form-wrapper{flex:2;min-width:380px}.contact-form{display:flex;flex-direction:column;gap:18px}
+    .contact-form input,.contact-form textarea{padding:16px;border:1px solid var(--light-gray);border-radius:8px}
+    .btn{padding:14px 35px;border-radius:50px;font-weight:700;text-transform:uppercase;box-shadow:0 4px 15px rgba(0,0,0,.1)}
+    .btn-primary{background:var(--primary-color);color:#fff;border:none}
+    .map-section{padding:60px 0;background:#fff;text-align:center}.map-container{max-width:1000px;margin:0 auto;height:450px;border-radius:15px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.1)}
+    .footer{background:var(--dark-color);color:#e0e0e0;padding:70px 20px 25px}
+    .footer-columns{display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between}
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <p><i class="fas fa-phone"></i> +39 333 000 0000</p>
+      <p><i class="fas fa-envelope"></i> info@albafrisona.it</p>
+    </div>
+  </div>
+
+  <header class="main-header">
+    <div class="container nav-container">
+      <h1 class="logo"><img src="logo.png" alt="Logo"> Alba <span style="color:var(--primary-color)">Frisona</span></h1>
+      <nav class="main-nav">
+         <a href="index.html">Home</a>
+        <a href="index.html#products">Prodotti</a>
+        <a href="about.html">Chi siamo</a>
+        <a href="genetica.html">Chi siamo</a>
+        <a href="attivita.html">Chi siamo</a>
+        <a href="index.html#contact">Contatti</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="contact-section" data-aos="fade-up">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contattaci</h2><div class="underline"></div>
+        <p>Vuoi rivendere i nostri prodotti, prenotare una visita o fare una domanda? Siamo qui per te.</p>
+      </div>
+
+      <div class="contact-content">
+        <div class="contact-info">
+          <h3>Informazioni</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Via Cascina *** (Casalpusterlengo - LO)</p>
+          <p><i class="fas fa-phone"></i> +39 333 000 0000</p>
+          <p><i class="fas fa-envelope"></i> info@albafrisona.it</p>
+          <p><i class="fas fa-clock"></i> Lun–Ven 9:00–18:00 • Sab 9:00–12:00</p>
+          <p><i class="fas fa-cow"></i> Fattoria didattica su prenotazione</p>
+        </div>
+
+        <div class="contact-form-wrapper">
+          <h3>Scrivici</h3>
+          <form class="contact-form">
+            <input type="text" placeholder="Il tuo nome" required>
+            <input type="email" placeholder="La tua email" required>
+            <input type="text" placeholder="Oggetto">
+            <textarea placeholder="Il tuo messaggio" required></textarea>
+            <button class="btn btn-primary" type="submit">Invia</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mappa -->
+  <section class="map-section" data-aos="fade-up">
+    <div class="container">
+      <h2>Dove siamo</h2>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps?q=Casalpusterlengo%20LO&output=embed" loading="lazy" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (coerente con le altre pagine) -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-columns">
+        <div class="footer-logo"><h2>Alba <span style="color:var(--primary-color)">Frisona</span></h2><p>Dal nostro allevamento alla tua tavola, con cura.</p></div>
+        <div class="footer-links">
+          <h4>Link rapidi</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li><li><a href="products.html">Prodotti</a></li>
+            <li><a href="about.html">Chi siamo</a></li><li><a href="contact.html">Contatti</a></li>
+            <li><a href="faq.html">FAQ</a></li><li><a href="cart.html">Carrello</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contatti</h4>
+          <p><i class="fas fa-map-marker-alt"></i> Casalpusterlengo (LO), Italia</p>
+          <p><i class="fas fa-phone"></i> +39 333 000 0000</p>
+          <p><i class="fas fa-envelope"></i> info@albafrisona.it</p>
+        </div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2025 Alba Frisona. Tutti i diritti riservati.</p></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({duration:1000,once:true});</script>
+</body>
+</html>

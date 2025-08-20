@@ -1,0 +1,726 @@
+<!-- genetica.html - Alba Frisona | Selezione genetica e analisi -->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alba Frisona – Selezione genetica & Analisi dati</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    /* Base & palette */
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Poppins',sans-serif;color:#333;background:#f8f8f8;line-height:1.7}
+    img{max-width:100%;height:auto;display:block}
+    a{text-decoration:none;color:inherit}
+    :root{
+      --primary:#5cb85c; --secondary:#ffc107;
+      --dark:#2c3e50; --muted:#6c757d; --light:#ffffff;
+      --panel:#ffffff; --soft:#f0f4f7; --line:#e9ecef;
+    }
+    .container{max-width:1200px;margin:0 auto;padding:0 25px}
+
+    /* Top bar & header (coerente con home) */
+    .top-bar{background:var(--dark);color:#fff;font-size:13px;padding:10px 0}
+    .top-bar .row{display:flex;gap:24px;justify-content:flex-end}
+    .top-bar i{color:var(--secondary);margin-right:8px}
+    header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(0,0,0,.05)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+    .logo{font-size:30px;font-weight:800;color:var(--dark)}
+    .logo span{color:var(--primary)}
+    .nav a{margin-left:26px;font-weight:600;color:#4a4a4a;position:relative}
+    .nav a:hover{color:var(--primary)}
+    .nav a::after{content:'';position:absolute;left:0;bottom:-5px;height:2px;width:0;background:var(--primary);transition:.25s}
+    .nav a:hover::after{width:100%}
+
+    /* Hero */
+    .hero{background:linear-gradient(to right,#eaf6ea,#f8fcf8);padding:70px 0}
+    .hero h1{font-size:42px;font-weight:800;color:var(--dark);text-align:center}
+    .hero p{max-width:920px;margin:12px auto 0;text-align:center;color:#4a4a4a}
+
+    /* Section helpers */
+    section{padding:80px 0}
+    .title{text-align:center;margin-bottom:40px}
+    .title h2{font-size:36px;font-weight:800;color:var(--dark)}
+    .underline{width:100px;height:5px;background:var(--primary);border-radius:6px;margin:12px auto 0}
+    .lead{max-width:980px;margin:14px auto 0;color:#4a4a4a;text-align:center}
+
+    /* Panels & grids */
+    .panel{background:var(--panel);border-radius:14px;box-shadow:0 8px 25px rgba(0,0,0,.06);padding:24px}
+    .two{display:grid;grid-template-columns:1.1fr 1fr;gap:26px}
+    .grid{display:grid;gap:26px}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .chip{display:inline-flex;align-items:center;gap:10px;background:#eef8ef;border:1px solid #d9f0da;color:#245a27;padding:10px 14px;border-radius:999px;font-weight:600}
+    .muted{color:var(--muted)}
+    figure{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+    figure img{width:100%}
+    figcaption{font-size:14px;color:#556; padding:10px 14px;border-top:1px solid var(--line)}
+    .note{background:#fffbe6;border:1px solid #ffe58f;padding:14px;border-radius:10px}
+
+    /* Sticky TOC */
+    .toc{position:sticky;top:86px;align-self:start}
+    .toc .panel{position:sticky;top:86px}
+    .toc h4{margin-bottom:10px}
+    .toc ul{list-style:none}
+    .toc li{margin:6px 0}
+    .toc a{color:#2c3e50}
+    .toc a:hover{color:var(--primary)}
+
+    /* Footer */
+    footer{background:var(--dark);color:#e0e0e0;padding:50px 0;margin-top:40px}
+    footer a:hover{color:var(--primary)}
+
+    /* Responsive */
+    @media (max-width:992px){
+      .two{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:640px){
+      .grid-2,.grid-3{grid-template-columns:1fr}
+      .hero h1{font-size:30px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="row">
+        <span><i class="fa-solid fa-phone"></i> +39 333 000 0000</span>
+        <span><i class="fa-solid fa-envelope"></i> info@albafrisona.it</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="logo">Alba <span>Frisona</span></div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#products">Prodotti</a>
+        <a href="about.html">Chi siamo</a>
+        <a href="genetica.html">Chi siamo</a>
+        <a href="attivita.html">Chi siamo</a>
+        <a href="index.html#contact">Contatti</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Selezione genetica & Analisi della mandria</h1>
+      <p>
+        Il nostro programma di selezione unisce <strong>tradizione</strong> e <strong>dati</strong>.
+        In questa pagina trovi la scelta dei tori, le strategie per categoria e l’analisi completa
+        dei principali indici genetici e produttivi (gPFT, IES/ICS, morfologia, latte, proteine, grassi,
+        fertilità e salute della mammella).
+      </p>
+    </div>
+  </section>
+
+  <!-- Scelta tori -->
+  <section id="tori">
+    <div class="container two">
+      <div class="panel">
+        <div class="title" style="text-align:left">
+          <h2>La scelta dei nostri tori</h2>
+          <div class="underline" style="margin-left:0"></div>
+        </div>
+        <p>
+          Abbiamo selezionato <strong>16 tori italiani</strong>, sia genomici sia provati, con un’età compresa tra
+          i 2 e i 6 anni. Tutti rispondono ai nostri obiettivi: <strong>latte di alta qualità</strong>, animali
+          <strong>sani e resistenti</strong>, corretta <strong>morfologia</strong> e attenzione alla <strong>sostenibilità</strong>.
+        </p>
+        <p class="muted" style="margin-top:10px">Tra questi, quattro tori sono stati utilizzati in più gruppi di vacche per il loro profilo genetico particolarmente promettente:</p>
+        <ul style="margin:12px 0 0 18px">
+          <li><strong>3STAR OH Marula ET</strong></li>
+          <li><strong>Bertaiola Zobel</strong></li>
+          <li><strong>K&amp;L RM Insieme Barone Rosso R</strong></li>
+          <li><strong>Aquila Holysmokes Asso</strong></li>
+        </ul>
+      </div>
+
+      <!-- Indice rapido (TOC) -->
+      <aside class="toc">
+        <div class="panel">
+          <h4>Indice rapido</h4>
+          <ul>
+            <li><a href="#tori">Scelta dei tori</a></li>
+            <li><a href="#galleria">Galleria & tabelle</a></li>
+            <li><a href="#strategie">Strategie per categoria</a></li>
+            <li><a href="#analisi">Analisi grafici</a></li>
+            <li><a href="#conclusioni">Conclusioni</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Galleria con le pagine immagini (foto tori + tabelle) -->
+  <section id="galleria">
+    <div class="container">
+      <div class="title">
+        <h2>Galleria & Dati di base</h2>
+        <div class="underline"></div>
+        <p class="lead">Foto dei riproduttori e quadri riassuntivi (manze, primipare, secondipare, pluripare).</p>
+      </div>
+
+      <div class="grid grid-2">
+        <figure>
+          <img src="images/1.png" alt="Marula ET e madre"/>
+          <figcaption>3STAR OH Marula ET e madre – introduzione e criteri di selezione.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/3.png" alt="Bertaiola Zobel e madre "/>
+          <figcaption>Bertaiola Zobel e madre</figcaption>
+        </figure>
+        <figure>
+          <img src="images/2.png" alt="K&L RM Inseme Barone Rosso R e figlia "/>
+          <figcaption>K&L RM Inseme Barone Rosso R e figlia.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/4.png" alt="Tabelle Secondipare e Pluripare; strategie per categoria"/>
+          <figcaption>Secondipare &amp; Pluripare – strategie per categoria e avvio analisi grafici.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strategie per categoria -->
+  <section id="strategie" style="background:#fff">
+    <div class="container">
+      <div class="title">
+        <h2>Strategie per categoria</h2>
+        <div class="underline"></div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="panel">
+          <span class="chip"><i class="fa-solid fa-cow"></i> Manze</span>
+          <p style="margin-top:10px">
+            Utilizziamo tori con indici elevati soprattutto per <strong>morfologia</strong> (TIPO, ICM, IAP),
+            <strong>PFT</strong> e qualità del latte. L’obiettivo è costruire una <strong>base genetica solida</strong>
+            per il futuro della mandria.
+          </p>
+        </div>
+        <div class="panel">
+          <span class="chip"><i class="fa-solid fa-seedling"></i> Primipare, Secondipare, Pluripare</span>
+          <p style="margin-top:10px">
+            Poniamo maggiore attenzione agli <strong>indici funzionali</strong> (longevità, fertilità, facilità di parto,
+            cellule somatiche) per migliorare la gestione quotidiana e ridurre i rischi sanitari.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <!-- ===================== TABELLE PER CATEGORIA ===================== -->
+<!-- ========== TABELLE INDICI (CODICE, NITIDE) ========== -->
+<section id="tabelle-categoria" class="green-data-section" data-aos="fade-up">
+  <div class="container">
+    <div class="section-title">
+      <h2>Tabelle indici per categoria</h2>
+      <div class="underline"></div>
+      <p>Quadro sintetico di indici genetici e produttivi per <strong>Manze</strong>, <strong>Primipare</strong>, <strong>Secondipare</strong> e <strong>Pluripare</strong>.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab active" data-target="#tab-manze">Manze</button>
+      <button class="tab" data-target="#tab-primipare">Primipare</button>
+      <button class="tab" data-target="#tab-secondipare">Secondipare</button>
+      <button class="tab" data-target="#tab-pluripare">Pluripare</button>
+    </div>
+
+    <!-- ===== MANZE ===== -->
+    <div id="tab-manze" class="tab-panel active" aria-labelledby="Manze">
+      <h3 class="panel-title">Manze – Animali</h3>
+      <div class="table-wrap">
+        <table class="coded-table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Data nascita</th>
+              <th>gPFT</th>
+              <th>Latte kg</th>
+              <th>Grasso %</th>
+              <th>Grasso kg</th>
+              <th>Prot. %</th>
+              <th>Prot. kg</th>
+              <th>K-CAS</th>
+              <th>Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ⬇️ DATI QUI (esempi) -->
+            <tr>
+              <td>AQUILA HOLYSMOKES ASSO</td><td>30/06/2023</td><td>4785</td><td>618</td><td>0.58</td><td>3.58</td><td>0.31</td><td>1.92</td><td>BB</td><td>1.11</td>
+            </tr>
+            <tr>
+              <td>BERTAIOLA ZOBEL</td><td>08/02/2023</td><td>5097</td><td>1139</td><td>0.34</td><td>3.87</td><td>0.36</td><td>4.10</td><td>BB</td><td>0.68</td>
+            </tr>
+            <tr>
+              <td>3STAR OH MARULA ET</td><td>01/05/2023</td><td>5014</td><td>1059</td><td>0.21</td><td>2.22</td><td>0.16</td><td>1.69</td><td>??</td><td>0.97</td>
+            </tr>
+            <!-- ↑↑↑ sostituisci/duplica righe secondo i tuoi dati -->
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="panel-title mt">Manze – Indici di categoria</h3>
+      <div class="table-wrap">
+        <table class="coded-table compact">
+          <thead>
+            <tr>
+              <th>ICM</th>
+              <th>Arti e Piedi</th>
+              <th>Parto Toro</th>
+              <th>Parto Figlie</th>
+              <th>Longevità</th>
+              <th>Cellule somatiche</th>
+              <th>Fertilità</th>
+              <th>IES-PR €</th>
+              <th>ICS-PR €</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ⬇️ DATI QUI (esempio: media categoria) -->
+            <tr>
+              <td>1.43</td><td>1.21</td><td>104</td><td>105</td><td>109</td><td>104</td><td>105</td><td>794</td><td>884</td>
+            </tr>
+            <!-- puoi aggiungere altre righe (es. min, max, p50…) se ti servono -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ===== PRIMIPARE ===== -->
+    <div id="tab-primipare" class="tab-panel" aria-labelledby="Primipare">
+      <h3 class="panel-title">Primipare – Animali</h3>
+      <div class="table-wrap">
+        <table class="coded-table">
+          <thead>
+            <tr>
+              <th>Nome</th><th>Data nascita</th><th>gPFT</th><th>Latte kg</th><th>Grasso %</th><th>Grasso kg</th><th>Prot. %</th><th>Prot. kg</th><th>K-CAS</th><th>Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ⬇️ DATI QUI -->
+            <tr>
+              <td>CRISTELLA CRISANTO ET</td><td>29/04/2019</td><td>4317</td><td>707</td><td>0.29</td><td>2.06</td><td>0.24</td><td>2.32</td><td>BB</td><td>0.52</td>
+            </tr>
+            <tr>
+              <td>3STAR OH MARULA ET</td><td>01/05/2023</td><td>5014</td><td>1069</td><td>0.19</td><td>2.01</td><td>0.16</td><td>1.73</td><td>??</td><td>0.97</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="panel-title mt">Primipare – Indici di categoria</h3>
+      <div class="table-wrap">
+        <table class="coded-table compact">
+          <thead>
+            <tr>
+              <th>ICM</th><th>Arti e Piedi</th><th>Parto Toro</th><th>Parto Figlie</th><th>Longevità</th><th>Cellule somatiche</th><th>Fertilità</th><th>IES-PR €</th><th>ICS-PR €</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ⬇️ DATI QUI -->
+            <tr>
+              <td>1.58</td><td>0.97</td><td>97</td><td>112</td><td>107</td><td>105</td><td>103</td><td>1072</td><td>904</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ===== SECONDIPARE ===== -->
+    <div id="tab-secondipare" class="tab-panel" aria-labelledby="Secondipare">
+      <h3 class="panel-title">Secondipare – Animali</h3>
+      <div class="table-wrap">
+        <table class="coded-table">
+          <thead>
+            <tr>
+              <th>Nome</th><th>Data nascita</th><th>gPFT</th><th>Latte kg</th><th>Grasso %</th><th>Grasso kg</th><th>Prot. %</th><th>Prot. kg</th><th>K-CAS</th><th>Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ⬇️ DATI QUI -->
+            <tr>
+              <td>AGH MOLTEN P</td><td>25/12/2022</td><td>4906</td><td>872</td><td>0.24</td><td>2.06</td><td>0.28</td><td>2.45</td><td>??</td><td>0.17</td>
+            </tr>
+            <tr>
+              <td>AQUILA HOLYSMOKES ASSO</td><td>30/06/2023</td><td>4785</td><td>618</td><td>0.58</td><td>3.58</td><td>0.31</td><td>1.92</td><td>BB</td><td>1.11</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="panel-title mt">Secondipare – Indici di categoria</h3>
+      <div class="table-wrap">
+        <table class="coded-table compact">
+          <thead>
+            <tr>
+              <th>ICM</th><th>Arti e Piedi</th><th>Parto Toro</th><th>Parto Figlie</th><th>Longevità</th><th>Cellule somatiche</th><th>Fertilità</th><th>IES-PR €</th><th>ICS-PR €</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ⬇️ DATI QUI -->
+            <tr>
+              <td>1.23</td><td>0.70</td><td>103</td><td>105</td><td>110</td><td>107</td><td>104</td><td>885</td><td>863</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ===== PLURIPARE ===== -->
+    <div id="tab-pluripare" class="tab-panel" aria-labelledby="Pluripare">
+      <h3 class="panel-title">Pluripare – Animali</h3>
+      <div class="table-wrap">
+        <table class="coded-table">
+          <thead>
+            <tr>
+              <th>Nome</th><th>Data nascita</th><th>gPFT</th><th>Latte kg</th><th>Grasso %</th><th>Grasso kg</th><th>Prot. %</th><th>Prot. kg</th><th>K-CAS</th><th>Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ⬇️ DATI QUI -->
+            <tr>
+              <td>HURACÁN</td><td>09/05/2019</td><td>4673</td><td>526</td><td>0.27</td><td>1.42</td><td>0.26</td><td>1.37</td><td>BB</td><td>0.76</td>
+            </tr>
+            <tr>
+              <td>CERETTESE INSIEME DIAMANTE</td><td>10/05/2020</td><td>4574</td><td>886</td><td>0.31</td><td>2.75</td><td>0.27</td><td>2.39</td><td>BB</td><td>1.14</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="panel-title mt">Pluripare – Indici di categoria</h3>
+      <div class="table-wrap">
+        <table class="coded-table compact">
+          <thead>
+            <tr>
+              <th>ICM</th><th>Arti e Piedi</th><th>Parto Toro</th><th>Parto Figlie</th><th>Longevità</th><th>Cellule somatiche</th><th>Fertilità</th><th>IES-PR €</th><th>ICS-PR €</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ⬇️ DATI QUI -->
+            <tr>
+              <td>1.09</td><td>0.66</td><td>101</td><td>106</td><td>107</td><td>106</td><td>105</td><td>692</td><td>609</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .green-data-section{ background:#eaf6ea; padding:80px 20px; }
+  .tabs{ display:flex; gap:10px; flex-wrap:wrap; margin:22px 0 14px; }
+  .tab{
+    border:2px solid var(--primary-color); background:#fff; color:var(--primary-color);
+    padding:10px 18px; border-radius:40px; font-weight:700; cursor:pointer; transition:.2s;
+  }
+  .tab:hover{ background:#37474f;; color:#fff; }
+  .tab.active{ background:#37474f;; color:#fff; }
+  .tab-panel{ display:none; }
+  .tab-panel.active{ display:block; }
+
+  .panel-title{ margin:18px 0 10px; color:#2c3e50; font-weight:800; }
+  .panel-title.mt{ margin-top:28px; }
+
+  .table-wrap{ overflow:auto; background:#fff; border-radius:14px; box-shadow:0 8px 24px rgba(0,0,0,.08); }
+  .coded-table{
+    width:100%; border-collapse:separate; border-spacing:0; font-size:14px;
+    font-variant-numeric: tabular-nums; line-height:1.4;
+  }
+  .coded-table thead th{
+    position:sticky; top:0; z-index:1; background:#f6fbf6; color:#2c3e50;
+    padding:12px 10px; text-align:left; border-bottom:2px solid #dbe7db;
+  }
+  .coded-table td{ padding:10px; border-bottom:1px solid #eef3ee; color:#37474f; }
+  .coded-table tbody tr:nth-child(even){ background:#fbfdfb; }
+  .coded-table.compact td, .coded-table.compact th{ padding:10px 8px; }
+  @media (max-width:768px){
+    .green-data-section{ padding:60px 16px; }
+    .coded-table{ font-size:13px; }
+  }
+</style>
+
+<script>
+  // Tabs switch
+  document.querySelectorAll('.tabs .tab').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.tabs .tab').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      const target = document.querySelector(btn.dataset.target);
+      if(target) target.classList.add('active');
+    });
+  });
+</script>
+
+<!-- ===================== ANALISI GRAFICI (8) — versione rifinita ===================== -->
+<section id="analisi-grafici" class="charts-section" data-aos="fade-up">
+  <div class="container">
+    <div class="section-title">
+      <h2>Analisi dei grafici: cosa ci dicono i dati</h2>
+      <div class="underline"></div>
+      <p>Andamento dei principali indici genetici e produttivi per <strong>manze</strong>, <strong>primipare</strong>, <strong>secondipare</strong> e <strong>pluripare</strong>.</p>
+    </div>
+
+    <!-- 1) gPFT -->
+    <div class="chart-block">
+      <figure class="chart-figure">
+        <img loading="lazy" src="images/gpft.png" alt="Grafico indice gPFT">
+      </figure>
+      <div class="chart-text">
+        <h3><span class="chip">gPFT</span> Indice genetico complessivo</h3>
+        <p>Si osserva una <strong>crescita costante</strong> del PFT dalle pluripare fino alle manze. È un andamento voluto: le manze sono la base genetica futura della mandria; un PFT alto qui indica <strong>miglioramento complessivo</strong> grazie alla selezione.</p>
+      </div>
+    </div>
+
+    <!-- 2) IES / ICS -->
+    <div class="chart-block">
+      <figure class="chart-figure">
+        <img loading="lazy" src="images/IES-PR.png" alt="Grafico IES-PR€ e ICS-PR€">
+      </figure>
+      <div class="chart-text">
+        <h3><span class="chip">Economia</span> IES-PR€ / ICS-PR€</h3>
+        <p><strong>Crescita significativa</strong> tra pluripare e secondipare; poi le curve si separano leggermente: l’<strong>IES</strong> continua a migliorare (efficienza e sostenibilità), l’<strong>ICS</strong> flette lievemente dopo le secondipare ma resta su buoni livelli.</p>
+      </div>
+    </div>
+
+    <!-- 3) Tipo / ICM / A&P -->
+    <div class="chart-block">
+      <figure class="chart-figure">
+        <img loading="lazy" src="images/ICM-A&P.jpg" alt="Grafico Tipo, ICM e Arti & Piedi">
+      </figure>
+      <div class="chart-text">
+        <h3><span class="chip">Morfologia</span> Tipo / ICM / Arti &amp; Piedi</h3>
+        <p>Trend in <strong>deciso aumento</strong> tra primipare e manze, segno di un <strong>miglioramento morfologico</strong> nella nuova generazione.</p>
+      </div>
+    </div>
+
+    <!-- 4) Latte kg -->
+    <div class="chart-block">
+      <figure class="chart-figure">
+        <img loading="lazy" src="images/Latte-kg.jpg" alt="Grafico produzione Latte in kg">
+      </figure>
+      <div class="chart-text">
+        <h3><span class="chip">Produzione</span> Latte (kg)</h3>
+        <p>La produzione cresce fino alle <strong>primipare</strong>, poi tende a stabilizzarsi nelle manze, intorno ai <strong>1000 kg</strong>, in linea con i nostri obiettivi.</p>
+      </div>
+    </div>
+
+    <!-- 5) % Proteine / % Grassi -->
+    <div class="chart-block">
+      <figure class="chart-figure">
+        <img loading="lazy" src="images/prot-grasso.jpg" alt="Grafico percentuali Proteine e Grassi">
+      </figure>
+      <div class="chart-text">
+        <h3><span class="chip">Qualità</span> % Proteine / % Grasso</h3>
+        <p>Valori nel complesso <strong>costanti</strong> con una leggera crescita nelle manze: segnali di <strong>qualità del latte</strong> in miglioramento.</p>
+      </div>
+    </div>
+
+    <!-- 6) Kg Proteine / Kg Grassi -->
+    <div class="chart-block">
+      <figure class="chart-figure">
+        <img loading="lazy" src="images/prot-grasso-kg.jpg" alt="Grafico kg Proteine e kg Grassi">
+      </figure>
+      <div class="chart-text">
+        <h3><span class="chip">Output</span> Kg Proteine / Kg Grassi</h3>
+        <p><strong>Incremento costante</strong> fino alle manze: produzione sempre più efficiente, in quantità e qualità.</p>
+      </div>
+    </div>
+
+    <!-- 7) Facilità di parto -->
+    <div class="chart-block">
+      <figure class="chart-figure">
+        <img loading="lazy" src="images/facilita-di-parto.jpg" alt="Grafico Facilità di Parto: tori vs figlie">
+      </figure>
+      <div class="chart-text">
+        <h3><span class="chip">Benessere</span> Facilità di parto</h3>
+        <p>I valori si <strong>bilanciano</strong> tra tori e figlie, indice di un buon equilibrio nella gestione del parto, soprattutto nelle manze.</p>
+      </div>
+    </div>
+
+    <!-- 8) Caratteri funzionali -->
+    <div class="chart-block">
+      <figure class="chart-figure">
+        <img loading="lazy" src="images/caratteri-funzionali.jpg" alt="Grafico Caratteri funzionali: longevità, cellule somatiche, fertilità, BCS">
+      </figure>
+      <div class="chart-text">
+        <h3><span class="chip">Funzionali</span> Caratteri funzionali</h3>
+        <ul>
+          <li><strong>Longevità</strong>: valori alti, in crescita fino alle secondipare, poi lieve calo.</li>
+          <li><strong>Cellule somatiche</strong>: buone e stabili.</li>
+          <li><strong>Fertilità</strong>: sostanzialmente costante.</li>
+          <li><strong>BCS</strong>: in equilibrio lungo i gruppi.</li>
+        </ul>
+        <h3>Conclusioni</h3>
+        <p>Le <strong>manze</strong> mostrano i profili più promettenti in quasi tutti gli indici: stiamo costruendo una <strong>base genetica solida</strong> per una mandria sana, produttiva e sostenibile.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* --- Layout & look --- */
+  .charts-section{
+    background: linear-gradient(180deg,#eaf6ea 0%, #ffffff 100%);
+    padding: 90px 20px;
+  }
+  .charts-section .container{ max-width: 1200px; margin:0 auto; }
+
+  .chart-block{
+    display:grid;
+    grid-template-columns: minmax(0,1.15fr) minmax(0,0.85fr);
+    gap:40px;
+    align-items:center;
+    padding:42px 24px;
+    margin:24px 0;
+    background:#fff;
+    border-radius:18px;
+    box-shadow:0 12px 30px rgba(0,0,0,.06);
+    overflow:hidden;
+  }
+
+  /* alternanza immagine/testo */
+  .chart-block:nth-child(even){ grid-template-columns: minmax(0,0.85fr) minmax(0,1.15fr); }
+  .chart-block:nth-child(even) .chart-figure{ order:2; }
+  .chart-block:nth-child(even) .chart-text{ order:1; text-align:right; }
+  .chart-block:nth-child(even) .chart-text ul{ padding-right:0; margin-right:0; }
+
+  .chart-figure{ border-radius:14px; overflow:hidden; position:relative; }
+  .chart-figure::after{
+    content:""; position:absolute; inset:auto 0 0 0; height:6px;
+    background:var(--primary-color,#5cb85c); opacity:.2;
+  }
+  .chart-figure img{
+    width:100%; display:block; aspect-ratio: 16/9; object-fit:cover;
+    transform: scale(1.02); transition: transform .5s ease, filter .4s ease;
+  }
+  .chart-figure:hover img{ transform: scale(1.05); filter:contrast(1.03); }
+
+  .chart-text h3{
+    margin:6px 0 10px; color:var(--dark-color,#2c3e50); font-weight:800; line-height:1.2;
+  }
+  .chart-text p{ margin:0 0 12px; color:var(--text-color,#4a4a4a); }
+  .chart-text ul{ margin:8px 0 14px 18px; color:var(--text-color,#4a4a4a); }
+
+  /* Piccolo badge davanti al titolo */
+  .chip{
+    display:inline-block; padding:4px 10px; margin-right:8px; font-size:.8rem;
+    background:#eaf6ea; color:var(--primary-color,#5cb85c); border-radius:999px; border:1px solid rgba(92,184,92,.35);
+    transform: translateY(-2px);
+  }
+
+  /* Responsive */
+  @media (max-width: 992px){
+    .chart-block{ grid-template-columns:1fr; text-align:left; }
+    .chart-block:nth-child(even) .chart-text{ text-align:left; }
+  }
+</style>
+
+<script>
+  /* Alterna automaticamente le animazioni AOS: immagini da dx/sx e testi opposti */
+  (function(){
+    const blocks = document.querySelectorAll('#analisi-grafici .chart-block');
+    blocks.forEach((b, i) => {
+      const fig = b.querySelector('.chart-figure');
+      const txt = b.querySelector('.chart-text');
+      const even = (i % 2) === 1; // zero-based
+
+      // Se usi AOS, applica effetti alternativi
+      if (fig) {
+        fig.setAttribute('data-aos', even ? 'fade-left' : 'fade-right');
+        fig.setAttribute('data-aos-duration', '800');
+        fig.setAttribute('data-aos-offset', '120');
+        fig.setAttribute('data-aos-delay', '80');
+      }
+      if (txt) {
+        txt.setAttribute('data-aos', even ? 'fade-right' : 'fade-left');
+        txt.setAttribute('data-aos-duration', '800');
+        txt.setAttribute('data-aos-offset', '120');
+        txt.setAttribute('data-aos-delay', '140');
+      }
+    });
+
+    // Fallback delicato se AOS non fosse caricato
+    if (!window.AOS) {
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){ e.target.classList.add('in-view'); }
+        });
+      },{threshold:.12});
+      document.querySelectorAll('#analisi-grafici .chart-block').forEach(el=>io.observe(el));
+    }
+  })();
+</script>
+
+<style>
+  /* Fallback animation (se AOS non è presente) */
+  #analisi-grafici .chart-block{ opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; }
+  #analisi-grafici .chart-block.in-view{ opacity:1; transform:none; }
+</style>
+
+
+  <!-- Conclusioni -->
+  <section id="conclusioni" style="background:#fff">
+    <div class="container">
+      <div class="title">
+        <h2>Conclusioni</h2>
+        <div class="underline"></div>
+      </div>
+      <div class="panel">
+        <p>
+          I dati confermano che il nostro lavoro di selezione genetica sta producendo risultati concreti:
+          le <strong>manze</strong>, cioè le vacche più giovani, mostrano i valori più promettenti in quasi tutti
+          gli indici. Stiamo costruendo una <strong>base genetica solida</strong>, con animali sani, produttivi e adatti
+          a un’agricoltura moderna, responsabile e sostenibile.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="grid grid-3">
+        <div>
+          <h3 style="color:var(--primary);font-weight:800">Alba Frisona</h3>
+          <p>Dal nostro allevamento alla tua tavola, con cura.</p>
+        </div>
+        <div>
+          <h4>Link</h4>
+          <p><a href="index.html">Home</a> · <a href="about.html">Chi siamo</a> · <a href="index.html#products">Prodotti</a></p>
+        </div>
+        <div>
+          <h4>Contatti</h4>
+          <p>Casalpusterlengo (LO) · +39 333 000 0000 · <a href="mailto:info@albafrisona.it">info@albafrisona.it</a></p>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:14px;font-size:14px">&copy; 2025 Alba Frisona. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
