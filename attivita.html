@@ -1,0 +1,187 @@
+<!-- attivita.html - tutte le attività -->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <title>Alba Frisona - Attività</title>
+  <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; color: #333; background-color: #f8f8f8; line-height: 1.7; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    .container{max-width:1200px;margin:0 auto;padding:0 25px}
+    :root{--primary:#5cb85c;--dark:#2c3e50;--light:#e9ecef}
+    .header{background:#fff;border-bottom:1px solid var(--light);box-shadow:0 2px 10px rgba(0,0,0,.05);position:sticky;top:0;z-index:10}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+    .logo{font-weight:800;font-size:30px;color:var(--dark)} .logo span{color:var(--primary)}
+    .nav a{margin-left:28px;font-weight:600;color:#4a4a4a;position:relative} .nav a:hover{color:var(--primary)}
+    .hero{padding:80px 0;background:linear-gradient(to right,#eaf6ea,#f8fcf8);text-align:center}s
+    .title{font-size:42px;font-weight:800;color:var(--dark)} .u{width:100px;height:5px;background:var(--primary);margin:14px auto;border-radius:5px}
+    .section{padding:90px 0;background:#fff} .gray{background:#f0f4f7}
+    .cols{display:flex;flex-wrap:wrap;gap:40px;align-items:center}
+    .col{flex:1;min-width:320px}
+    .card{background:#fff;border-radius:14px;box-shadow:0 8px 25px rgba(0,0,0,.06);padding:24px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+    .footer{background:var(--dark);color:#e0e0e0;padding:60px 0 24px}
+    @media(max-width:768px){.title{font-size:30px}.nav{flex-direction:column;gap:10px}}
+
+/* Header */
+    .main-header { background: #fff; border-bottom: 1px solid var(--light-gray); box-shadow: 0 2px 10px rgba(0,0,0,.05); position: sticky; top: 0; z-index: 1000; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+    .logo { font-size: 32px; font-weight: 800; color: var(--dark-color); }
+    .logo-dairy { color: var(--primary-color); }
+    .main-nav a:hover { color: var(--primary-color); }
+    .main-nav a::after { content: ''; position: absolute; width: 0%; height: 2px; background: var(--primary-color); left: 0; bottom: -5px; transition: .3s ease-out; }
+    .main-nav a:hover::after { width: 100%; }
+
+    
+    /* Top Bar */
+    .top-bar { background: var(--dark-color); color: #fff; padding: 12px 0; font-size: 13px; }
+    .top-bar-content { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 25px; }
+    .top-bar-content p { display: flex; align-items: center; }
+    .top-bar-content i { margin-right: 8px; color: var(--secondary-color); }
+    .main-header { background:#fff; border-bottom:1px solid #eee; }
+.nav-container { display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.logo img { height:48px; width:auto; display:block; }
+.main-nav a { margin-left:18px; font-weight:600; color:#1b1b1b; text-decoration:none; }
+.main-nav a:hover { color:var(--primary-color, #2f9e44); }
+
+
+
+
+
+/* Palette (fallback nel caso non siano già definiti) */
+:root{--primary-color:#5cb85c;--secondary-color:#ffc107;--dark-color:#2c3e50;--text-color:#4a4a4a;--light-gray:#e9ecef;}
+.container{max-width:1200px;margin:0 auto;padding:0 25px}
+
+/* Top Bar */
+.top-bar{background:var(--dark-color);color:#fff;padding:12px 0;font-size:13px}
+.top-bar-content{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:25px}
+.top-bar-content p{display:flex;align-items:center}
+.top-bar-content i{margin-right:8px;color:var(--secondary-color)}
+
+/* Header / Navbar */
+.main-header{background:#fff;border-bottom:1px solid var(--light-gray);box-shadow:0 2px 10px rgba(0,0,0,.05);position:sticky;top:0;z-index:1000}
+.nav-container{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0}
+.logo img{height:48px;width:auto;display:block}
+
+.main-nav{display:flex;align-items:center;gap:26px}
+.main-nav a{font-weight:600;color:var(--text-color);position:relative;transition:.25s}
+.main-nav a:hover{color:var(--primary-color)}
+.main-nav a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--primary-color);transition:width .25s}
+.main-nav a:hover::after{width:100%}
+
+/* Burger */
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:transparent;border:0;cursor:pointer}
+.nav-toggle span{display:block;width:26px;height:2px;background:#1b1b1b;border-radius:2px}
+
+/* Mobile */
+@media (max-width:900px){
+  .nav-toggle{display:inline-flex}
+  .main-nav{
+    position:fixed; left:0; right:0; top:72px;
+    background:#fff; border-top:1px solid var(--light-gray);
+    padding:16px 24px; flex-direction:column; gap:14px;
+    transform:translateY(-120%); transition:transform .25s ease;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+  }
+  .main-nav.open{transform:translateY(0)}
+  .main-nav a::after{bottom:-3px}
+}
+
+  </style>
+</head>
+<body>
+
+
+
+<header class="header">
+  <div class="container nav-container">
+    <!-- Logo -->
+    <a class="logo" href="index.html" aria-label="Alba Frisona - Home">
+      <img src="images/logo.png" alt="Alba Frisona" />
+    </a>
+
+    <!-- Main nav -->
+    <nav class="main-nav" aria-label="Navigazione principale">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Prodotti</a>
+      <a href="about.html">Chi siamo</a>
+      <a href="genetica.html">Genetica</a>
+      <a href="attivita.html">Attività</a>
+      <a href="index.html#contact">Contatti</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" data-aos="fade-down">
+  <div class="container">
+    <h1 class="title">Le attività in azienda</h1>
+    <div class="u"></div>
+    <p>Apriamo le porte a scuole, famiglie e gruppi: educazione, esperienze e gusto nel rispetto dell’ambiente e del benessere animale. Tutte le attività sono su prenotazione.</p>
+  </div>
+</section>
+
+<section class="section gray" id="fattoria" data-aos="fade-up">
+  <div class="container">
+    <div class="cols">
+      <div class="col"><img src="images/bambina latte.jpg" alt="Fattoria didattica"></div>
+      <div class="col card">
+        <h2>Fattoria didattica</h2>
+        <p>La nostra fattoria didattica è pensata per scuole di ogni ordine e grado. Offriamo percorsi che uniscono teoria, esperienza pratica e momenti di gioco. Le giornate iniziano con l’accoglienza e l’introduzione alla realtà aziendale, seguite dalla visita alla stalla e alla sala mungitura, dove gli studenti scoprono il ciclo di vita delle vacche, l’alimentazione e le cure quotidiane dedicate agli animali. Un momento sempre molto apprezzato è la visita alla zona dei vitellini, dove i più piccoli possono osservare da vicino i nuovi nati.
+La parte più affascinante per i ragazzi è la dimostrazione del robot di mungitura automatico, che mostra come le nuove tecnologie possano rispettare gli animali e migliorare il lavoro dell’allevatore. Dopo il pranzo al sacco, che mettiamo a disposizione in uno spazio coperto e attrezzato con tavoli e panche, il pomeriggio è dedicato ai laboratori del latte e a dei seguenti assaggi dei nostri prodotti. Qui gli studenti imparano a trasformare il latte in yogurt o in piccole formaggelle e possono portare a casa ciò che hanno realizzato. 
+</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="carovana" data-aos="fade-up">
+  <div class="container">
+    <div class="cols">
+      <div class="col card">
+        <h2>Tour in carovana</h2>
+        <p>Per famiglie e gruppi organizziamo tour in carovana trainata da un trattore, alla scoperta dei nostri campi. Durante il percorso raccontiamo come coltiviamo mais, erba medica e altri foraggi destinati all’alimentazione delle vacche, spiegando perché il loro ruolo è fondamentale per ottenere latte di qualità. Il tour si conclude con la visita all a stalla, alla sala mungitura e all’area dei vitellini, con la possibilità di partecipare a laboratori del latte su prenotazione. L’esperienza termina con la degustazione dei nostri prodotti: latte fresco, yogurt e formaggi.</p>
+      </div>
+      <div class="col"><img src="images/caravan.webp" alt="Tour in carovana"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section gray" id="eventi" data-aos="fade-up">
+  <div class="container">
+    <div class="title"><h2>Open day, eventi e degustazioni</h2><div class="u"></div></div>
+    <div class="grid">
+      <div class="card"><img src="images/corsa con sacchi.webp" alt="Giochi rurali" style="border-radius:12px;margin-bottom:12px"><p>Open day con stand, mercatini, giochi rurali per bambini (corsa nei sacchi, mungitura della vacca finta) e aree picnic.</p></div>
+      <div class="card"><img src="images/giornata-nazionale-del-formaggio-mondiale-giugno-317110564.jpg.webp" alt="Giornata del formaggio" style="border-radius:12px;margin-bottom:12px"><p>Eventi stagionali come “La festa del latte”, “La giornata del formaggio”, “Estate in azienda” e “Natale in stalla”.</p></div>
+      <div class="card"><img src="images/latte deg.jpg" alt="Degustazioni guidate" style="border-radius:12px;margin-bottom:12px"><p>Pranzi rustici, aperitivi al tramonto e degustazioni guidate di latte, yogurt e formaggi.</p></div>
+    </div>
+    <div class="card" style="margin-top:24px">
+      <h3>Uno sguardo al futuro</h3>
+      <p>La nostra azienda è aperta al pubblico tutto l’anno e ogni stagione diventa l’occasione per creare esperienze uniche. Organizziamo giornate dedicate, eventi e momenti conviviali per far vivere da vicino l’atmosfera rurale.
+Gli open day sono feste a cielo aperto: l’azienda si anima di stand espositivi con attrezzature agricole, punti informativi sul ciclo produttivo e il benessere animale, mercatini dei nostri prodotti e di artigiani locali, apicoltori e florovivaisti. I bambini trovano giochi a tema rurale, come la corsa nei sacchi, il truccabimbi o la mungitura della vacca finta, mentre per gli adulti ci sono aree picnic e spazi relax.
+Accanto agli open day organizziamo anche eventi stagionali, come “La festa del latte”, “La giornata del formaggio”, “Estate in azienda” e “Natale in stalla”, occasioni che uniscono convivialità e valorizzazione dei prodotti del territorio.
+Chi desidera vivere l’azienda in modo ancora più intimo può prenotare pranzi rustici a base di formaggi, salumi locali, verdure di stagione e pane fatto in casa. Durante l’estate, invece, proponiamo aperitivi al tramonto sotto il portico o nel giardino, con luci calde, musica acustica e i nostri prodotti a fare da protagonisti. Offriamo anche degustazioni guidate di latte, yogurt e formaggio artigianale. 
+</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container" style="text-align:center">
+    <p>&copy; 2025 Alba Frisona · Casalpusterlengo (LO) · info@albafrisona.it</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init({duration:1000,once:true});</script>
+</body>
+</html>

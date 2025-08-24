@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prodotto | Alba Frisona</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+
+
+    :root{
+      --primary-color:#5cb85c; --secondary-color:#ffc107; --dark-color:#2c3e50;
+      --light-gray:#e9ecef; --text-color:#4a4a4a;
+    }
+    *{box-sizing:border-box} body{font-family:Poppins,sans-serif;color:#333;background:#f8f8f8;line-height:1.7;margin:0}
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    a{text-decoration:none;color:inherit}
+
+
+
+    
+    /* Top Bar */
+    .top-bar { background: var(--dark-color); color: #fff; padding: 12px 0; font-size: 13px; }
+    .top-bar-content { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 25px; }
+    .top-bar-content p { display: flex; align-items: center; }
+    .top-bar-content i { margin-right: 8px; color: var(--secondary-color); }
+    /* header minimal */
+    .main-header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--light-gray)}
+    .nav-container{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+    .logo{display:flex;align-items:center;font-weight:800;font-size:24px;color:var(--dark-color)}
+    .logo img{height:34px;margin-right:10px}
+    .main-nav a{margin-left:22px;font-weight:600;color:var(--text-color);position:relative}
+    .main-nav a:hover{color:var(--primary-color)}
+
+    /* title */
+    .section-title{text-align:center;margin:26px 0 10px}
+    .section-title h1{font-size:38px;margin:0;color:var(--dark-color)}
+    .underline{width:90px;height:5px;background:var(--primary-color);border-radius:5px;margin:12px auto}
+
+    /* product layout */
+    .product-wrap{display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:start;background:#fff;border-radius:18px;padding:28px;box-shadow:0 12px 30px rgba(0,0,0,.06)}
+    .main-media{border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+    .main-media img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover}
+    .thumbs{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
+    .thumbs img{width:100px;height:72px;object-fit:cover;border-radius:10px;cursor:pointer;border:2px solid transparent;transition:.2s}
+    .thumbs img.active, .thumbs img:hover{border-color:var(--primary-color)}
+    .product-info h2{margin:6px 0 8px}
+    .bullet{display:flex;gap:10px;margin:10px 0;color:var(--text-color)}
+    .bullet i{color:var(--primary-color)}
+
+    .meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:18px}
+    .meta-card{background:#f9fbf9;border:1px solid #e6f2e6;border-radius:12px;padding:14px}
+    .meta-card h4{margin:0 0 8px;color:var(--dark-color)}
+    .meta-card p,.meta-card ul{margin:0;font-size:15px}
+    .meta-card ul{padding-left:18px}
+
+    /* nutritional table */
+    .nutri{margin-top:24px}
+    .nutri h3{margin-bottom:10px}
+    table.nutri-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--light-gray)}
+    .nutri-table th,.nutri-table td{padding:12px 14px;border-bottom:1px solid var(--light-gray);text-align:left}
+    .nutri-table thead th{background:#eaf6ea;color:#1e6026}
+    .note{font-size:13px;color:#666;margin-top:6px}
+
+    /* Related */
+    .related{margin:50px 0}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+    .card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+    .card img{width:100%;height:170px;object-fit:cover}
+    .card h4{margin:12px 14px;color:var(--dark-color)}
+    .card p{margin:0 14px 14px;color:var(--text-color)}
+    .btn{display:inline-block;padding:12px 24px;border-radius:40px;font-weight:700}
+    .btn-primary{background:var(--primary-color);color:#fff}
+    .btn-primary:hover{filter:brightness(0.95)}
+    
+    .main-header { background:#fff; border-bottom:1px solid #eee; }
+.nav-container { display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.logo img { height:48px; width:auto; display:block; }
+.main-nav a { margin-left:18px; font-weight:600; color:#1b1b1b; text-decoration:none; }
+.main-nav a:hover { color:var(--primary-color, #2f9e44); }
+
+
+/* === FIX IMMAGINI ADATTIVE (incolla in fondo ai tuoi CSS) === */
+
+/* Contenitore immagine principale: centrato, no crop */
+.main-media{
+  display:flex; align-items:center; justify-content:center;
+  height: clamp(320px, 55vh, 640px);   /* altezza reattiva */
+  background:#fff; border-radius:14px; overflow:hidden;
+  box-shadow:0 8px 24px rgba(0,0,0,.06);
+}
+
+/* Immagine principale: mostra tutto, mantiene proporzioni */
+.main-media img{
+  width:auto; height:100%; max-width:100%;
+  object-fit: contain;                   /* <— niente ritagli */
+}
+
+/* Miniature: no zoom, leggero padding su fondo bianco */
+.thumbs img{
+  width:110px; aspect-ratio: 4 / 3;     /* forma coerente */
+  height:auto; object-fit: contain;      /* no tagli */
+  background:#fff; padding:6px;
+  border-radius:10px; border:2px solid transparent;
+  cursor:pointer; transition: .2s;
+}
+.thumbs img.active,
+.thumbs img:hover{ border-color: var(--primary-color); }
+
+/* Layout: evita “stiramenti” verticali del contenuto di destra */
+.product-wrap{ align-items: stretch; }
+
+@media (max-width: 768px){
+  .main-media{ height: clamp(240px, 45vh, 460px); }
+}
+
+
+/* Palette (fallback nel caso non siano già definiti) */
+:root{--primary-color:#5cb85c;--secondary-color:#ffc107;--dark-color:#2c3e50;--text-color:#4a4a4a;--light-gray:#e9ecef;}
+.container{max-width:1200px;margin:0 auto;padding:0 25px}
+
+/* Top Bar */
+.top-bar{background:var(--dark-color);color:#fff;padding:12px 0;font-size:13px}
+.top-bar-content{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:25px}
+.top-bar-content p{display:flex;align-items:center}
+.top-bar-content i{margin-right:8px;color:var(--secondary-color)}
+
+/* Header / Navbar */
+.main-header{background:#fff;border-bottom:1px solid var(--light-gray);box-shadow:0 2px 10px rgba(0,0,0,.05);position:sticky;top:0;z-index:1000}
+.nav-container{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0}
+.logo img{height:48px;width:auto;display:block}
+
+.main-nav{display:flex;align-items:center;gap:26px}
+.main-nav a{font-weight:600;color:var(--text-color);position:relative;transition:.25s}
+.main-nav a:hover{color:var(--primary-color)}
+.main-nav a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--primary-color);transition:width .25s}
+.main-nav a:hover::after{width:100%}
+
+/* Burger */
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:transparent;border:0;cursor:pointer}
+.nav-toggle span{display:block;width:26px;height:2px;background:#1b1b1b;border-radius:2px}
+
+/* Mobile */
+@media (max-width:900px){
+  .nav-toggle{display:inline-flex}
+  .main-nav{
+    position:fixed; left:0; right:0; top:72px;
+    background:#fff; border-top:1px solid var(--light-gray);
+    padding:16px 24px; flex-direction:column; gap:14px;
+    transform:translateY(-120%); transition:transform .25s ease;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+  }
+  .main-nav.open{transform:translateY(0)}
+  .main-nav a::after{bottom:-3px}
+}
+
+  </style>
+</head>
+<body>
+
+
+  
+
+  <header class="main-header">
+    <div class="container nav-container">
+    <!-- Logo -->
+    <a class="logo" href="index.html" aria-label="Alba Frisona - Home">
+      <img src="images/logo.png" alt="Alba Frisona" />
+    </a>
+
+    <!-- Main nav -->
+    <nav class="main-nav" aria-label="Navigazione principale">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Prodotti</a>
+      <a href="about.html">Chi siamo</a>
+      <a href="genetica.html">Genetica</a>
+      <a href="attivita.html">Attività</a>
+      <a href="index.html#contact">Contatti</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+  </div>
+  </header>
+
+  <main class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h1 id="prod-title">Prodotto</h1>
+      <div class="underline"></div>
+    </div>
+
+    <section class="product-wrap">
+      <div>
+        <figure class="main-media"><img id="main-img" src="" alt=""></figure>
+        <div class="thumbs" id="thumbs"></div>
+      </div>
+
+      <div class="product-info">
+        <h2 id="prod-sub">—</h2>
+        <p id="prod-desc">—</p>
+
+        <div class="bullet"><i class="fa-solid fa-leaf"></i><span>Latte fresco di <strong>Frisona</strong>, filiera corta e tracciata.</span></div>
+        <div class="bullet"><i class="fa-solid fa-snowflake"></i><span>Catena del freddo garantita: 0–4°C.</span></div>
+        <div class="bullet"><i class="fa-solid fa-award"></i><span>Qualità certificata per yogurt e formaggi artigianali.</span></div>
+
+        <div class="meta-grid">
+          <div class="meta-card">
+            <h4>Ingredienti</h4>
+            <p id="ingredients"></p>
+          </div>
+          <div class="meta-card">
+            <h4>Allergeni</h4>
+            <p>LATTE e derivati. Può contenere tracce naturali di lattosio.</p>
+          </div>
+          <div class="meta-card">
+            <h4>Conservazione</h4>
+            <p id="storage"></p>
+          </div>
+          <div class="meta-card">
+            <h4>Origine &amp; Tracciabilità</h4>
+            <ul>
+              <li>Lodi, Italia – <em>Alba Frisona</em></li>
+              <li>Benessere animale &amp; sostenibilità</li>
+              <li>Filiera corta: dal campo al laboratorio</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="related" data-aos="fade-up">
+      <div class="section-title" style="margin-top:36px">
+        <h2>Potrebbe interessarti anche</h2>
+        <div class="underline"></div>
+      </div>
+      <div class="cards">
+        <a class="card" href="product.html?p=latte">
+          <img src="images/milk-1809238_1280.jpg" alt="Latte fresco">
+          <h4>Latte fresco</h4>
+          <p>Puro e genuino, raffreddato a 4°C e pastorizzato per sicurezza.</p>
+        </a>
+        <a class="card" href="product.html?p=yogurt">
+          <img src="images/23179_1.webp" alt="Yogurt bianco cremoso">
+          <h4>Yogurt bianco cremoso</h4>
+          <p>Con fermenti selezionati per una consistenza setosa e digeribile.</p>
+        </a>
+        <a class="card" href="product.html?p=formaggio">
+          <img src="images/giornata-nazionale-del-formaggio-mondiale-giugno-317110564.jpg.webp" alt="Formaggio artigianale">
+          <h4>Formaggio artigianale</h4>
+          <p>Dal latte alla cagliata: gusto pieno, proteine nobili e calcio.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({duration:800, once:true});</script>
+
+  <script>
+    // === DATI PRODOTTI ===
+    const PRODUCTS = {
+      latte: {
+        name: "Latte fresco",
+        subtitle: "Puro e genuino",
+         desc: "Puro, genuino e ricco di nutrienti, il nostro latte proviene esclusivamente da vacche Frisone allevate con cura e rispetto, ha un equilibrio naturale tra proteine e grassi che lo rende cremoso e dal gusto pieno. È ideale a colazione, in cucina o da gustare semplicemente fresco: ogni sorso racconta la qualità del nostro lavoro quotidiano. La produzione inizia nelle nostre stalle, dove le vacche sono alimentate con una dieta sana e bilanciata. La mungitura avviene in un ambiente pulito e controllato; subito dopo il latte viene raffreddato a 4 °C per preservarne la freschezza e le proprietà naturali. Successivamente viene pastorizzato per eliminare eventuali batteri nocivi, mantenendo però intatto il suo sapore autentico. Il nostro latte è intero e conserva tutto il contenuto naturale di grassi, vitamine e proteine, garantendo cremosità e gusto unici. Una volta imbottigliato, arriva direttamente sulle tavole in tutta la sua purezza",
+
+        ingredients: "Latte vaccino intero 100%",
+        storage: "Conservare in frigorifero a 0–4°C. Dopo l’apertura consumare entro 3 giorni.",
+        images: [
+          "images/Milk Bottle Mockup.png",
+          "images/milk-1809238_1280.jpg"
+        ],
+        nutrition: [
+          ["Energia", "268 kJ / 64 kcal"],
+          ["Grassi", "3.6 g"],
+          ["di cui saturi", "2.3 g"],
+          ["Carboidrati", "4.8 g"],
+          ["di cui zuccheri", "4.8 g"],
+          ["Proteine", "3.3 g"],
+          ["Sale", "0.10 g"]
+        ]
+      },
+      yogurt: {
+        name: "Yogurt bianco cremoso",
+        subtitle: "Setoso e digeribile",
+        desc: "Il nostro yogurt nasce dal latte fresco di Frisona e da fermenti lattici selezionati, Streptococcus thermophilus e Lactobacillus bulgaricus, che lavorano in perfetto equilibrio per dare cremosità, gusto e benessere. Durante la fermentazione il lattosio viene trasformato in zuccheri semplici, più digeribili, e questo lo rende adatto anche a chi è intollerante.Dal punto di vista nutrizionale lo yogurt è una fonte preziosa di calcio, proteine e vitamine del gruppo B, ma con un apporto calorico contenuto. Un vasetto da 150 grammi copre circa un terzo del fabbisogno giornaliero di calcio, con sole 90-100 kcal. Non solo nutre, ma contribuisce a riequilibrare la flora intestinale, a sostenere la salute di ossa, pelle e sistema nervoso e persino a regolare i livelli di colesterolo. È un alleato quotidiano per tutte le età, compresa la gravidanza, in quanto aiuta allo sviluppo del feto aumentando i livelli di acido folico. Cremoso, saziante e naturalmente buono, rappresenta un piccolo gesto di benessere da concedersi ogni giorno.La sua produzione segue un processo semplice ma preciso. Dopo la mungitura, il latte viene raffreddato e pastorizzato a temperatura leggermente più alta rispetto a quello destinato al consumo diretto: in questo modo le proteine assumono una consistenza più cremosa. Una volta raffreddato alla temperatura ideale, vengono aggiunti i fermenti lattici che trasformano il lattosio e conferiscono al prodotto la tipica cremosità. La fermentazione dura alcune ore, finché lo yogurt non raggiunge il giusto equilibrio tra sapore e consistenza. Infine viene raffreddato, confezionato e pronto per essere gustato al naturale o arricchito secondo i propri gusti.",
+        ingredients: "Latte vaccino, fermenti lattici vivi",
+        storage: "Conservare a 0–4°C. Tenere lontano da fonti di calore. Consumare entro la data indicata.",
+        images: [
+          "images/mockup-yogurt.png",
+          "images/yogurt.jpg"
+        ],
+        nutrition: [
+          ["Energia", "250 kJ / 60 kcal"],
+          ["Grassi", "3.5 g"],
+          ["di cui saturi", "2.2 g"],
+          ["Carboidrati", "4.7 g"],
+          ["di cui zuccheri", "4.7 g"],
+          ["Proteine", "3.8 g"],
+          ["Sale", "0.10 g"]
+        ]
+      },
+      formaggio: {
+        name: "Formaggio artigianale",
+        subtitle: "Gusto pieno e naturale",
+        desc: "La produzione segue i metodi della tradizione casearia. Dopo la pastorizzazione, il latte viene arricchito con fermenti lattici e caglio naturale, che permettono la formazione della cagliata. Questa massa viene poi tagliata con cura per separarla dal siero e, a seconda del tipo di formaggio, può essere riscaldata o lasciata a riposo fino a raggiungere la consistenza desiderata. Successivamente viene messa in stampi e pressata per darle forma e compattezza. Segue la fase della salatura, che esalta il sapore e ne migliora la conservabilità. Per i formaggi freschi il prodotto è pronto in pochi giorni, mentre per quelli stagionati inizia un periodo di maturazione in ambienti a temperatura e umidità controllate, che ne arricchiscono il gusto e perfezionano la consistenza. ",
+        ingredients: "Latte vaccino, sale, caglio",
+        storage: "Conservare in frigorifero (4–8°C). Dopo l’apertura proteggere con carta alimentare.",
+        images: [
+          "images/sliced cheese package mockup.png",
+          "images/Formaggio.jpg",
+
+        ],
+        nutrition: [
+          ["Energia", "1678 kJ / 402 kcal"],
+          ["Grassi", "33 g"],
+          ["di cui saturi", "21 g"],
+          ["Carboidrati", "1.3 g"],
+          ["di cui zuccheri", "1.3 g"],
+          ["Proteine", "25 g"],
+          ["Sale", "1.8 g"]
+        ]
+      }
+    };
+
+    // === INIT ===
+    const params = new URLSearchParams(location.search);
+    const key = (params.get('p') || 'latte').toLowerCase();
+    const data = PRODUCTS[key] || PRODUCTS.latte;
+
+    document.title = data.name + " | Alba Frisona";
+    document.getElementById('prod-title').textContent = data.name;
+    document.getElementById('prod-sub').textContent = data.subtitle;
+    document.getElementById('prod-desc').innerHTML = data.desc;
+    document.getElementById('ingredients').textContent = data.ingredients;
+    document.getElementById('storage').textContent = data.storage;
+
+    // immagini
+    const main = document.getElementById('main-img');
+    const thumbs = document.getElementById('thumbs');
+    main.src = data.images[0]; main.alt = data.name;
+    data.images.forEach((src, i)=>{
+      const im = new Image(); im.src = src; im.alt = data.name + " galleria " + (i+1);
+      if(i===0) im.classList.add('active');
+      im.addEventListener('click',()=>{ main.src = src; thumbs.querySelectorAll('img').forEach(t=>t.classList.remove('active')); im.classList.add('active');});
+      thumbs.appendChild(im);
+    });
+
+    // tabella nutrizionale
+    const tbody = document.querySelector('#nutri-table tbody');
+    data.nutrition.forEach(row=>{
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${row[0]}</td><td>${row[1]}</td>`;
+      tbody.appendChild(tr);
+    });
+  </script>
+</body>
+</html>
